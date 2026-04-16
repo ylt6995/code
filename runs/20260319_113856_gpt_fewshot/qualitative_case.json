@@ -1,0 +1,68 @@
+{
+  "chosen_config": {
+    "provider": "gpt",
+    "method": "few",
+    "seed": 0,
+    "tag": "gpt_few_seed0"
+  },
+  "threshold_by_val_recall": 66,
+  "bid_ann_guid": "e2aa45a4-e02f-4d3f-82d5-ae09a38d62a4",
+  "baseline": {
+    "bid_ann_guid": "e2aa45a4-e02f-4d3f-82d5-ae09a38d62a4",
+    "label": 1,
+    "baseline_prob": 0.9118961983747755,
+    "baseline_pred": 0
+  },
+  "llm": {
+    "score": 70,
+    "riskLevel": "\"High\"",
+    "keyEvidence": "[\"存在明显的围标/串标迹象\"]"
+  },
+  "indicators": {
+    "rd": 0.0904160396888241,
+    "cv_losing": 0.32410958911823884,
+    "price_cv_all": 0.31617785246991026,
+    "contact_dup_count": 0,
+    "phone_dup_count": 1,
+    "email_dup_count": 1,
+    "wins": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "bidders_brief": [
+    {
+      "x_providername": "泰合工程咨询",
+      "x_price": 81809.292214,
+      "versionnumber": "2025-04-05T09:00:00.000+08:00",
+      "x_isqualified": 1
+    },
+    {
+      "x_providername": "未来规划设计院",
+      "x_price": 145712.618942,
+      "versionnumber": "2025-04-05T09:00:30.000+08:00",
+      "x_isqualified": 0
+    },
+    {
+      "x_providername": "远景规划设计院",
+      "x_price": 76627.856225,
+      "versionnumber": "2025-04-05T09:01:00.000+08:00",
+      "x_isqualified": 0
+    },
+    {
+      "x_providername": "泰合工程咨询",
+      "x_price": 129695.901177,
+      "versionnumber": "2025-04-05T09:01:30.000+08:00",
+      "x_isqualified": 0
+    },
+    {
+      "x_providername": "鼎盛建筑有限公司//宏远建设集团",
+      "x_price": 79791.503433,
+      "versionnumber": "2025-04-05T09:02:00.000+08:00",
+      "x_isqualified": 0
+    }
+  ]
+}

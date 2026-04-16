@@ -1,0 +1,368 @@
+{
+  "run_id": "20260318_190305",
+  "data": "data\\all_data.xlsx",
+  "split_seed": 42,
+  "prompt_seeds": [
+    1867825,
+    419610,
+    4614226,
+    4108603,
+    3744854,
+    2341057,
+    1719583,
+    9149732,
+    1458591,
+    9906820
+  ],
+  "providers": [
+    "gpt"
+  ],
+  "methods": [
+    "zero"
+  ],
+  "fewshot_k_per_class": 2,
+  "cache_path": "runs\\cache\\llm_cache.jsonl",
+  "dry_run": false,
+  "mock": true,
+  "llm_settings": {},
+  "retry": {
+    "max_retries": 6,
+    "backoff_s": [
+      2,
+      4,
+      8,
+      16,
+      32,
+      60
+    ]
+  },
+  "results": [
+    {
+      "provider": "gpt",
+      "method": "zero",
+      "val_summary": {
+        "recall_mean": 1.0,
+        "recall_min": 1.0,
+        "recall_max": 1.0,
+        "accuracy_mean": 1.0,
+        "precision_mean": 1.0,
+        "f1_mean": 1.0,
+        "threshold_mean": 17.3
+      },
+      "test_summary": {
+        "recall_mean": 1.0,
+        "recall_min": 1.0,
+        "recall_max": 1.0,
+        "accuracy_mean": 0.6625,
+        "precision_mean": 0.27142857142857146,
+        "f1_mean": 0.42666666666666664,
+        "threshold_mean": 17.3
+      },
+      "per_seed": [
+        {
+          "seed": 1867825,
+          "best_threshold": 17,
+          "val": {
+            "threshold": 17,
+            "tp": 2,
+            "fp": 0,
+            "fn": 0,
+            "tn": 14,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "positive_rate": 0.125
+          },
+          "test": {
+            "threshold": 17,
+            "tp": 2,
+            "fp": 6,
+            "fn": 0,
+            "tn": 8,
+            "accuracy": 0.625,
+            "precision": 0.25,
+            "recall": 1.0,
+            "f1": 0.4,
+            "positive_rate": 0.5
+          }
+        },
+        {
+          "seed": 419610,
+          "best_threshold": 19,
+          "val": {
+            "threshold": 19,
+            "tp": 2,
+            "fp": 0,
+            "fn": 0,
+            "tn": 14,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "positive_rate": 0.125
+          },
+          "test": {
+            "threshold": 19,
+            "tp": 2,
+            "fp": 5,
+            "fn": 0,
+            "tn": 9,
+            "accuracy": 0.6875,
+            "precision": 0.2857142857142857,
+            "recall": 1.0,
+            "f1": 0.4444444444444445,
+            "positive_rate": 0.4375
+          }
+        },
+        {
+          "seed": 4614226,
+          "best_threshold": 18,
+          "val": {
+            "threshold": 18,
+            "tp": 2,
+            "fp": 0,
+            "fn": 0,
+            "tn": 14,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "positive_rate": 0.125
+          },
+          "test": {
+            "threshold": 18,
+            "tp": 2,
+            "fp": 5,
+            "fn": 0,
+            "tn": 9,
+            "accuracy": 0.6875,
+            "precision": 0.2857142857142857,
+            "recall": 1.0,
+            "f1": 0.4444444444444445,
+            "positive_rate": 0.4375
+          }
+        },
+        {
+          "seed": 4108603,
+          "best_threshold": 14,
+          "val": {
+            "threshold": 14,
+            "tp": 2,
+            "fp": 0,
+            "fn": 0,
+            "tn": 14,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "positive_rate": 0.125
+          },
+          "test": {
+            "threshold": 14,
+            "tp": 2,
+            "fp": 6,
+            "fn": 0,
+            "tn": 8,
+            "accuracy": 0.625,
+            "precision": 0.25,
+            "recall": 1.0,
+            "f1": 0.4,
+            "positive_rate": 0.5
+          }
+        },
+        {
+          "seed": 3744854,
+          "best_threshold": 20,
+          "val": {
+            "threshold": 20,
+            "tp": 2,
+            "fp": 0,
+            "fn": 0,
+            "tn": 14,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "positive_rate": 0.125
+          },
+          "test": {
+            "threshold": 20,
+            "tp": 2,
+            "fp": 5,
+            "fn": 0,
+            "tn": 9,
+            "accuracy": 0.6875,
+            "precision": 0.2857142857142857,
+            "recall": 1.0,
+            "f1": 0.4444444444444445,
+            "positive_rate": 0.4375
+          }
+        },
+        {
+          "seed": 2341057,
+          "best_threshold": 19,
+          "val": {
+            "threshold": 19,
+            "tp": 2,
+            "fp": 0,
+            "fn": 0,
+            "tn": 14,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "positive_rate": 0.125
+          },
+          "test": {
+            "threshold": 19,
+            "tp": 2,
+            "fp": 6,
+            "fn": 0,
+            "tn": 8,
+            "accuracy": 0.625,
+            "precision": 0.25,
+            "recall": 1.0,
+            "f1": 0.4,
+            "positive_rate": 0.5
+          }
+        },
+        {
+          "seed": 1719583,
+          "best_threshold": 19,
+          "val": {
+            "threshold": 19,
+            "tp": 2,
+            "fp": 0,
+            "fn": 0,
+            "tn": 14,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "positive_rate": 0.125
+          },
+          "test": {
+            "threshold": 19,
+            "tp": 2,
+            "fp": 5,
+            "fn": 0,
+            "tn": 9,
+            "accuracy": 0.6875,
+            "precision": 0.2857142857142857,
+            "recall": 1.0,
+            "f1": 0.4444444444444445,
+            "positive_rate": 0.4375
+          }
+        },
+        {
+          "seed": 9149732,
+          "best_threshold": 14,
+          "val": {
+            "threshold": 14,
+            "tp": 2,
+            "fp": 0,
+            "fn": 0,
+            "tn": 14,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "positive_rate": 0.125
+          },
+          "test": {
+            "threshold": 14,
+            "tp": 2,
+            "fp": 6,
+            "fn": 0,
+            "tn": 8,
+            "accuracy": 0.625,
+            "precision": 0.25,
+            "recall": 1.0,
+            "f1": 0.4,
+            "positive_rate": 0.5
+          }
+        },
+        {
+          "seed": 1458591,
+          "best_threshold": 17,
+          "val": {
+            "threshold": 17,
+            "tp": 2,
+            "fp": 0,
+            "fn": 0,
+            "tn": 14,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "positive_rate": 0.125
+          },
+          "test": {
+            "threshold": 17,
+            "tp": 2,
+            "fp": 5,
+            "fn": 0,
+            "tn": 9,
+            "accuracy": 0.6875,
+            "precision": 0.2857142857142857,
+            "recall": 1.0,
+            "f1": 0.4444444444444445,
+            "positive_rate": 0.4375
+          }
+        },
+        {
+          "seed": 9906820,
+          "best_threshold": 16,
+          "val": {
+            "threshold": 16,
+            "tp": 2,
+            "fp": 0,
+            "fn": 0,
+            "tn": 14,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "positive_rate": 0.125
+          },
+          "test": {
+            "threshold": 16,
+            "tp": 2,
+            "fp": 5,
+            "fn": 0,
+            "tn": 9,
+            "accuracy": 0.6875,
+            "precision": 0.2857142857142857,
+            "recall": 1.0,
+            "f1": 0.4444444444444445,
+            "positive_rate": 0.4375
+          }
+        }
+      ]
+    }
+  ],
+  "baseline_logit": {
+    "threshold": 0.8801908450505479,
+    "val": {
+      "tp": 2.0,
+      "fp": 0.0,
+      "fn": 0.0,
+      "tn": 14.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "accuracy": 1.0
+    },
+    "test": {
+      "tp": 2.0,
+      "fp": 0.0,
+      "fn": 0.0,
+      "tn": 14.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "accuracy": 1.0
+    }
+  }
+}

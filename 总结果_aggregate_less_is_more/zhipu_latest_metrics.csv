@@ -1,0 +1,4 @@
+﻿provider,model,method,seeds,roc_auc_mean,roc_auc_std,pr_auc_mean,pr_auc_std,test_precision_mean,test_precision_std,test_recall_mean,test_recall_std,test_f1_mean,test_f1_std
+zhipu,glm-4.7,zero,1,0.58375,0.0,0.6355427937569137,0.0,0.5185185185185185,0.0,0.7,0.0,0.5957446808510639,0.0
+zhipu,glm-4.7,few,1,0.6875,0.0,0.7404976189407054,0.0,0.631578947368421,0.0,0.6,0.0,0.6153846153846154,0.0
+zhipu,glm-4.7,cot,1,0.72,0.0,0.7700623363835455,0.0,0.8333333333333334,0.0,0.5,0.0,0.625,0.0

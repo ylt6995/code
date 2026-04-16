@@ -1,0 +1,23 @@
+{
+  "threshold": 0.8801908450505479,
+  "val": {
+    "tp": 2.0,
+    "fp": 0.0,
+    "fn": 0.0,
+    "tn": 14.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "accuracy": 1.0
+  },
+  "test": {
+    "tp": 2.0,
+    "fp": 0.0,
+    "fn": 0.0,
+    "tn": 14.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "accuracy": 1.0
+  }
+}

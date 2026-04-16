@@ -1,0 +1,2 @@
+﻿provider,model,method,seed_count,test_accuracy_mean,test_accuracy_std,test_precision_mean,test_precision_std,test_recall_mean,test_recall_std,test_f1_mean,test_f1_std
+gpt,gpt-4o-mini,zero,10,0.5075000000000001,0.012076147288491209,0.5038461538461538,0.00619289604538008,1.0,0.0,0.6700564971751413,0.005458145667114669

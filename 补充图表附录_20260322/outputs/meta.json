@@ -1,0 +1,12 @@
+{
+  "gpt_run_dir": "runs\\20260321_180011_gpt_all",
+  "zhipu_run_dir": "runs\\20260322_001430_zhipu_all",
+  "excel": "data\\all_data.xlsx",
+  "test_size": 40,
+  "best_gpt_method_by_test_f1_mean": "zero",
+  "best_zhipu_method_by_test_f1": "cot",
+  "notes": {
+    "gpt_curve_score": "zero-shot scores averaged over 10 prompt seeds, normalized to [0,1] by /100",
+    "zhipu_curve_score": "zero-shot seed=0 score normalized to [0,1] by /100"
+  }
+}

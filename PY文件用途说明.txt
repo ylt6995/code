@@ -1,0 +1,15 @@
+llm.py：用于读取数据集内容，然后连接大模型API一一进行测试后将结果存入文件。变量excel_path表示数据集文件，result_path表示结果输出文件，method表示使用的提示方法，其值123分别代表无提示、少样本提示和思维链，变量company代表使用大模型的厂商，分别是chatanywhere和质谱清言。
+logit.py：用于尝试建立logit回归模型进行识别围标串标，但是目前未完善。
+visualization.py：用于绘制数据集中关于每个招标项目的相对距离和变异系数的散点图，第17行读入的字符串就是数据集位置。对应word文件中的图3、4、10、11
+visualization2.py：用于绘制单个实验结果的围标串标置信度散点分布图及ROC曲线，变量result_path是读入的实验结果文件。对应word文件中的图8（a）（b）（c）、图12（a）（b）（c）
+visualization3.py：用于绘制多个实验结果的时间对比柱形图，变量result_path是所有读入文件的列表。对应word文件中的图9、图13（d）
+visualization4.py：用于绘制两个实验结果对比下的围标串标置信度散点分布图及ROC曲线。对应word文件中的图13（a）（b）
+visualization5.py：用于绘制单个实验结果的PR曲线及标出最优F1。
+visualization6.py：用于绘制两个实验结果的PR曲线对比。对应word文件中的图13（c）
+visualization7.py：用于绘制多个实验结果的ROC曲线对比。对应word文件中的图8（d）
+
+.\数据\fix.py：调整最初数据集中的x_isqualified标签在一个项目中存在多个为1的情况。调整过后的文件为all_testdata_modified.xlsx
+
+.\数据\enhance.py：为all_data.xlsx添加投标公司的公司注册信息和高管股东信息等。
+llm2.py：读取all_data.xlsx并输入大模型进行测试
+logit2.py：对llm2的输出结果进行线性分类

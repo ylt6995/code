@@ -1,0 +1,402 @@
+{
+  "run_id": "20260414_hard_price_time_llm",
+  "data": "data\\all_data.xlsx",
+  "split_seed": 42,
+  "prompt_seeds": [
+    0
+  ],
+  "providers": [
+    "gpt",
+    "zhipu"
+  ],
+  "methods": [
+    "zero",
+    "few",
+    "cot"
+  ],
+  "fewshot_k_per_class": 2,
+  "cache_path": "runs\\cache\\llm_cache.jsonl",
+  "dry_run": false,
+  "mock": false,
+  "llm_settings": {
+    "gpt": {
+      "provider": "gpt",
+      "api_key": "sk-g8htlwkKoAPwSWcTLWosSHbzhrf85nQ8ntg6kUAQSu9CEAzt",
+      "base_url": "https://api.chatanywhere.tech/v1",
+      "model": "gpt-4o-mini",
+      "temperature": 0.1,
+      "top_p": 0.9,
+      "timeout_s": 300.0,
+      "max_tokens": 6000
+    },
+    "zhipu": {
+      "provider": "zhipu",
+      "api_key": "43afddac9f27481c9cddaecc788add9e.k4euT7GTuS9RTgMS",
+      "base_url": "https://open.bigmodel.cn/api/paas/v4",
+      "model": "glm-4.7",
+      "temperature": 0.1,
+      "top_p": 0.9,
+      "timeout_s": 300.0,
+      "max_tokens": 6000
+    }
+  },
+  "retry": {
+    "max_retries": 6,
+    "backoff_s": [
+      2,
+      4,
+      8,
+      16,
+      32,
+      60
+    ]
+  },
+  "threshold_selection": {
+    "strategy": "recall_at_least_then_max_precision",
+    "recall_target": 0.9,
+    "recall_target_by_method": {}
+  },
+  "split_policy": {
+    "fixed_test_balance": true,
+    "test_size": 40,
+    "test_pos": 20
+  },
+  "hard_scope": "price_time",
+  "results": [
+    {
+      "provider": "gpt",
+      "method": "zero",
+      "val_summary": {
+        "recall_mean": 1.0,
+        "recall_min": 1.0,
+        "recall_max": 1.0,
+        "accuracy_mean": 0.15384615384615385,
+        "precision_mean": 0.15384615384615385,
+        "f1_mean": 0.2666666666666667,
+        "threshold_mean": 0.0
+      },
+      "test_summary": {
+        "recall_mean": 1.0,
+        "recall_min": 1.0,
+        "recall_max": 1.0,
+        "accuracy_mean": 0.5,
+        "precision_mean": 0.5,
+        "f1_mean": 0.6666666666666666,
+        "threshold_mean": 0.0
+      },
+      "per_seed": [
+        {
+          "seed": 0,
+          "best_threshold": 0,
+          "val": {
+            "threshold": 0,
+            "tp": 6,
+            "fp": 33,
+            "fn": 0,
+            "tn": 0,
+            "accuracy": 0.15384615384615385,
+            "precision": 0.15384615384615385,
+            "recall": 1.0,
+            "f1": 0.2666666666666667,
+            "positive_rate": 1.0
+          },
+          "test": {
+            "threshold": 0,
+            "tp": 20,
+            "fp": 20,
+            "fn": 0,
+            "tn": 0,
+            "accuracy": 0.5,
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666,
+            "positive_rate": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "provider": "gpt",
+      "method": "few",
+      "val_summary": {
+        "recall_mean": 1.0,
+        "recall_min": 1.0,
+        "recall_max": 1.0,
+        "accuracy_mean": 0.15384615384615385,
+        "precision_mean": 0.15384615384615385,
+        "f1_mean": 0.2666666666666667,
+        "threshold_mean": 0.0
+      },
+      "test_summary": {
+        "recall_mean": 1.0,
+        "recall_min": 1.0,
+        "recall_max": 1.0,
+        "accuracy_mean": 0.5,
+        "precision_mean": 0.5,
+        "f1_mean": 0.6666666666666666,
+        "threshold_mean": 0.0
+      },
+      "per_seed": [
+        {
+          "seed": 0,
+          "best_threshold": 0,
+          "val": {
+            "threshold": 0,
+            "tp": 6,
+            "fp": 33,
+            "fn": 0,
+            "tn": 0,
+            "accuracy": 0.15384615384615385,
+            "precision": 0.15384615384615385,
+            "recall": 1.0,
+            "f1": 0.2666666666666667,
+            "positive_rate": 1.0
+          },
+          "test": {
+            "threshold": 0,
+            "tp": 20,
+            "fp": 20,
+            "fn": 0,
+            "tn": 0,
+            "accuracy": 0.5,
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666,
+            "positive_rate": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "provider": "gpt",
+      "method": "cot",
+      "val_summary": {
+        "recall_mean": 1.0,
+        "recall_min": 1.0,
+        "recall_max": 1.0,
+        "accuracy_mean": 0.15384615384615385,
+        "precision_mean": 0.15384615384615385,
+        "f1_mean": 0.2666666666666667,
+        "threshold_mean": 0.0
+      },
+      "test_summary": {
+        "recall_mean": 1.0,
+        "recall_min": 1.0,
+        "recall_max": 1.0,
+        "accuracy_mean": 0.5,
+        "precision_mean": 0.5,
+        "f1_mean": 0.6666666666666666,
+        "threshold_mean": 0.0
+      },
+      "per_seed": [
+        {
+          "seed": 0,
+          "best_threshold": 0,
+          "val": {
+            "threshold": 0,
+            "tp": 6,
+            "fp": 33,
+            "fn": 0,
+            "tn": 0,
+            "accuracy": 0.15384615384615385,
+            "precision": 0.15384615384615385,
+            "recall": 1.0,
+            "f1": 0.2666666666666667,
+            "positive_rate": 1.0
+          },
+          "test": {
+            "threshold": 0,
+            "tp": 20,
+            "fp": 20,
+            "fn": 0,
+            "tn": 0,
+            "accuracy": 0.5,
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666,
+            "positive_rate": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "provider": "zhipu",
+      "method": "zero",
+      "val_summary": {
+        "recall_mean": 1.0,
+        "recall_min": 1.0,
+        "recall_max": 1.0,
+        "accuracy_mean": 0.15384615384615385,
+        "precision_mean": 0.15384615384615385,
+        "f1_mean": 0.2666666666666667,
+        "threshold_mean": 0.0
+      },
+      "test_summary": {
+        "recall_mean": 1.0,
+        "recall_min": 1.0,
+        "recall_max": 1.0,
+        "accuracy_mean": 0.5,
+        "precision_mean": 0.5,
+        "f1_mean": 0.6666666666666666,
+        "threshold_mean": 0.0
+      },
+      "per_seed": [
+        {
+          "seed": 0,
+          "best_threshold": 0,
+          "val": {
+            "threshold": 0,
+            "tp": 6,
+            "fp": 33,
+            "fn": 0,
+            "tn": 0,
+            "accuracy": 0.15384615384615385,
+            "precision": 0.15384615384615385,
+            "recall": 1.0,
+            "f1": 0.2666666666666667,
+            "positive_rate": 1.0
+          },
+          "test": {
+            "threshold": 0,
+            "tp": 20,
+            "fp": 20,
+            "fn": 0,
+            "tn": 0,
+            "accuracy": 0.5,
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666,
+            "positive_rate": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "provider": "zhipu",
+      "method": "few",
+      "val_summary": {
+        "recall_mean": 1.0,
+        "recall_min": 1.0,
+        "recall_max": 1.0,
+        "accuracy_mean": 0.15384615384615385,
+        "precision_mean": 0.15384615384615385,
+        "f1_mean": 0.2666666666666667,
+        "threshold_mean": 0.0
+      },
+      "test_summary": {
+        "recall_mean": 1.0,
+        "recall_min": 1.0,
+        "recall_max": 1.0,
+        "accuracy_mean": 0.5,
+        "precision_mean": 0.5,
+        "f1_mean": 0.6666666666666666,
+        "threshold_mean": 0.0
+      },
+      "per_seed": [
+        {
+          "seed": 0,
+          "best_threshold": 0,
+          "val": {
+            "threshold": 0,
+            "tp": 6,
+            "fp": 33,
+            "fn": 0,
+            "tn": 0,
+            "accuracy": 0.15384615384615385,
+            "precision": 0.15384615384615385,
+            "recall": 1.0,
+            "f1": 0.2666666666666667,
+            "positive_rate": 1.0
+          },
+          "test": {
+            "threshold": 0,
+            "tp": 20,
+            "fp": 20,
+            "fn": 0,
+            "tn": 0,
+            "accuracy": 0.5,
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666,
+            "positive_rate": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "provider": "zhipu",
+      "method": "cot",
+      "val_summary": {
+        "recall_mean": 1.0,
+        "recall_min": 1.0,
+        "recall_max": 1.0,
+        "accuracy_mean": 0.15384615384615385,
+        "precision_mean": 0.15384615384615385,
+        "f1_mean": 0.2666666666666667,
+        "threshold_mean": 0.0
+      },
+      "test_summary": {
+        "recall_mean": 1.0,
+        "recall_min": 1.0,
+        "recall_max": 1.0,
+        "accuracy_mean": 0.5,
+        "precision_mean": 0.5,
+        "f1_mean": 0.6666666666666666,
+        "threshold_mean": 0.0
+      },
+      "per_seed": [
+        {
+          "seed": 0,
+          "best_threshold": 0,
+          "val": {
+            "threshold": 0,
+            "tp": 6,
+            "fp": 33,
+            "fn": 0,
+            "tn": 0,
+            "accuracy": 0.15384615384615385,
+            "precision": 0.15384615384615385,
+            "recall": 1.0,
+            "f1": 0.2666666666666667,
+            "positive_rate": 1.0
+          },
+          "test": {
+            "threshold": 0,
+            "tp": 20,
+            "fp": 20,
+            "fn": 0,
+            "tn": 0,
+            "accuracy": 0.5,
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666,
+            "positive_rate": 1.0
+          }
+        }
+      ]
+    }
+  ],
+  "baseline_logit": {
+    "threshold": 0.2691611792908308,
+    "val": {
+      "tp": 6.0,
+      "fp": 28.0,
+      "fn": 0.0,
+      "tn": 5.0,
+      "precision": 0.17647058823529413,
+      "recall": 1.0,
+      "f1": 0.3,
+      "accuracy": 0.28205128205128205
+    },
+    "test": {
+      "tp": 20.0,
+      "fp": 18.0,
+      "fn": 0.0,
+      "tn": 2.0,
+      "precision": 0.5263157894736842,
+      "recall": 1.0,
+      "f1": 0.6896551724137931,
+      "accuracy": 0.55
+    }
+  }
+}

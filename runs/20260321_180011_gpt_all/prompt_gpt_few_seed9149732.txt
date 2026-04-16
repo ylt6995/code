@@ -1,0 +1,53 @@
+你是招投标审计与反围串标专家。你的任务是对单个招标项目的围标/串标风险进行量化评估。
+
+打分标准（总分 0-100，分数越高风险越高）：
+1) 价格与排序异常（0-35）：中标价显著低于其他报价；或存在规律性差值/比例；或多家报价高度贴近。
+2) 集中度指标（0-15）：CV（变异系数）越低越可疑；RD（最低价与次低价差/落败者标准差）越高越可疑。
+3) 报价时间/版本同步（0-10）：versionnumber 等字段高度相近或呈现异常同步。
+4) 公司关联线索（0-25）：高管/股东交叉任职；注册时间/地点相近；电话/邮箱重复。
+5) 其他强证据（0-15）：同一联系人、明显的掩护报价行为、与常识不符的报价结构等。
+
+风险等级建议：0-20 低；21-40 中；41-70 高；71-100 严重。
+
+输出要求：
+- 只输出一个合法 JSON，不要输出额外文本。
+- collusionSuspicionScore 必须是 0-100 的整数。
+- scoringStandard 用一句话概括本次打分依据（不要复述全部标准）。
+- scoringBreakdown 给出每个维度的得分与证据。
+
+JSON Schema：
+{
+  "collusionSuspicionScore": 0,
+  "riskLevel": "Low|Medium|High|Critical",
+  "scoringStandard": "string",
+  "scoringBreakdown": [
+    {"dimension": "string", "points": 0, "evidence": ["string"]}
+  ],
+  "keyEvidence": ["string"],
+  "mostSuspiciousGroup": {"bidders": ["string"], "reasoning": "string"},
+  "recommendedInvestigationSteps": ["string"]
+}
+
+少样本参考（仅用于学习输出风格，不要照抄结论）：
+示例输入：
+{"project": {"bid_ann_guid": "d4b18bef-dd91-4f00-a22a-0ad65c6df689", "projguid": "5e6f7a8b-9c0d-1e2f-3a4b-5c6d7e8f9a0b"}, "bidders": [{"x_providername": "中海建筑有限公司//宏远建设集团", "x_price": 101093.373505, "versionnumber": "2024-11-06T02:09:16.000+08:00", "x_isqualified": 1, "x_biddercontact": 18711223344}, {"x_providername": "恒信工程设计//大地工程设计", "x_price": 56089.03027, "versionnumber": "2024-11-06T02:09:16.000+08:00", "x_isqualified": 0, "x_biddercontact": 13655667788}, {"x_providername": "东方建设集团", "x_price": 130225.509906, "versionnumber": "2024-11-05T02:09:16.000+08:00", "x_isqualified": 0, "x_biddercontact": 18655667788}, {"x_providername": "鼎盛建筑有限公司//金信工程设计", "x_price": 53982.417084, "versionnumber": "2024-11-06T02:09:16.000+08:00", "x_isqualified": 0, "x_biddercontact": 18088776655}, {"x_providername": "中创建筑有限公司//金信工程设计", "x_price": 69313.498567, "versionnumber": "2024-11-04T02:09:16.000+08:00", "x_isqualified": 0, "x_biddercontact": 18711223344}], "indicators": {"rd": 0.058740556041141256, "cv_losing": 0.4633307430015401, "price_cv_all": 0.39950507424169923, "contact_dup_count": 1, "phone_dup_count": 0, "email_dup_count": 0, "wins": [1, 0, 0, 0, 0]}}
+示例输出：
+{"collusionSuspicionScore": 15, "riskLevel": "Low", "scoringStandard": "按价格异常、指标集中度、公司关联线索综合计分", "scoringBreakdown": [{"dimension": "价格与排序异常", "points": 5, "evidence": ["示例"]}, {"dimension": "集中度指标", "points": 3, "evidence": ["示例"]}, {"dimension": "公司关联线索", "points": 2, "evidence": ["示例"]}], "keyEvidence": ["非围标"], "mostSuspiciousGroup": {"bidders": [], "reasoning": "非围标"}, "recommendedInvestigationSteps": ["核对投标联系人与注册信息", "复核报价形成依据"]}
+
+示例输入：
+{"project": {"bid_ann_guid": "cff6e82f-d4e2-4fd8-ae52-f9e9f7f8075a", "projguid": "1e2f3a4b-5c6d-7e8f-9a0b-1c2d3e4f5a6b"}, "bidders": [{"x_providername": "晨光建设集团//中海建筑有限公司", "x_price": 138403.013571, "versionnumber": "2025-06-24T02:09:16.000+08:00", "x_isqualified": 0, "x_biddercontact": 18322334455}, {"x_providername": "未来规划设计院", "x_price": 100382.298893, "versionnumber": "2025-06-24T02:09:16.000+08:00", "x_isqualified": 0, "x_biddercontact": 13088776655}, {"x_providername": "恒信工程设计//泰合工程咨询", "x_price": 79117.264014, "versionnumber": "2025-06-25T02:09:16.000+08:00", "x_isqualified": 1, "x_biddercontact": 18144332211}, {"x_providername": "大地工程设计", "x_price": 138453.623385, "versionnumber": "2025-06-25T02:09:16.000+08:00", "x_isqualified": 0, "x_biddercontact": 13477665544}, {"x_providername": "经纬建筑设计", "x_price": 98799.20556, "versionnumber": "2025-06-25T02:09:16.000+08:00", "x_isqualified": 0, "x_biddercontact": 13266554433}], "indicators": {"rd": 0.8773968076070124, "cv_losing": 0.18849078718562498, "price_cv_all": 0.23755305811384209, "contact_dup_count": 0, "phone_dup_count": 0, "email_dup_count": 0, "wins": [0, 0, 1, 0, 0]}}
+示例输出：
+{"collusionSuspicionScore": 85, "riskLevel": "High", "scoringStandard": "按价格异常、指标集中度、公司关联线索综合计分", "scoringBreakdown": [{"dimension": "价格与排序异常", "points": 25, "evidence": ["示例"]}, {"dimension": "集中度指标", "points": 10, "evidence": ["示例"]}, {"dimension": "公司关联线索", "points": 15, "evidence": ["示例"]}], "keyEvidence": ["围标/串标"], "mostSuspiciousGroup": {"bidders": [], "reasoning": "围标/串标"}, "recommendedInvestigationSteps": ["核对投标联系人与注册信息", "复核报价形成依据"]}
+
+示例输入：
+{"project": {"bid_ann_guid": "bdaca4fb-e5fb-4ff7-8a81-17e4880260c6", "projguid": "0022b09c-3b12-4566-a459-465b03de5fdd"}, "bidders": [{"x_providername": "市市政工程总公司", "x_price": 29510346.024593, "versionnumber": "2024-06-21T21:00:00.000+08:00", "x_isqualified": 1, "x_biddercontact": 13811055770}, {"x_providername": "明日规划设计院", "x_price": 30395656.405331, "versionnumber": "2024-06-21T21:01:00.000+08:00", "x_isqualified": 0, "x_biddercontact": 18266554433}, {"x_providername": "晨光建设集团", "x_price": 31307526.097491, "versionnumber": "2024-06-21T21:04:00.000+08:00", "x_isqualified": 0, "x_biddercontact": 18266554433}, {"x_providername": "中恒建筑有限公司", "x_price": 32246751.880415, "versionnumber": "2024-06-21T21:09:00.000+08:00", "x_isqualified": 0, "x_biddercontact": 18266554433}, {"x_providername": "经纬建筑设计", "x_price": 33214154.436828, "versionnumber": "2024-06-21T21:08:00.000+08:00", "x_isqualified": 0, "x_biddercontact": 18266554433}], "indicators": {"rd": 0.7298765519570699, "cv_losing": 0.03815413855369447, "price_cv_all": 0.04672602521206071, "contact_dup_count": 3, "phone_dup_count": 0, "email_dup_count": 0, "wins": [1, 0, 0, 0, 0]}}
+示例输出：
+{"collusionSuspicionScore": 85, "riskLevel": "High", "scoringStandard": "按价格异常、指标集中度、公司关联线索综合计分", "scoringBreakdown": [{"dimension": "价格与排序异常", "points": 25, "evidence": ["示例"]}, {"dimension": "集中度指标", "points": 10, "evidence": ["示例"]}, {"dimension": "公司关联线索", "points": 15, "evidence": ["示例"]}], "keyEvidence": ["围标/串标"], "mostSuspiciousGroup": {"bidders": [], "reasoning": "围标/串标"}, "recommendedInvestigationSteps": ["核对投标联系人与注册信息", "复核报价形成依据"]}
+
+示例输入：
+{"project": {"bid_ann_guid": "06a47e5b-2d19-45b4-8e6d-1d54cea9ce58", "projguid": "d9cf9740-9d1c-47c4-ba4f-fa4fe74c31d0"}, "bidders": [{"x_providername": "明日规划设计院", "x_price": 11963047.863049, "versionnumber": "2024-06-05T12:00:00.000+08:00", "x_isqualified": 1, "x_biddercontact": 13722539748}, {"x_providername": "中恒建筑有限公司", "x_price": 12754250.864805, "versionnumber": "2024-06-06T14:00:00.000+08:00", "x_isqualified": 0, "x_biddercontact": 13813808225}, {"x_providername": "省建筑工程集团有限公司", "x_price": 12313973.232308, "versionnumber": "2024-06-06T07:00:00.000+08:00", "x_isqualified": 0, "x_biddercontact": 13714064904}, {"x_providername": "宏远建设集团//银河规划设计院", "x_price": 11980728.172891, "versionnumber": "2024-06-06T04:00:00.000+08:00", "x_isqualified": 0, "x_biddercontact": 13919794273}, {"x_providername": "中恒建筑有限公司", "x_price": 11458588.759843, "versionnumber": "2024-06-05T17:00:00.000+08:00", "x_isqualified": 0, "x_biddercontact": 13851954112}], "indicators": {"rd": 0.9227713402559272, "cv_losing": 0.04507986403775225, "price_cv_all": 0.0396121101367423, "contact_dup_count": 0, "phone_dup_count": 0, "email_dup_count": 0, "wins": [1, 0, 0, 0, 0]}}
+示例输出：
+{"collusionSuspicionScore": 15, "riskLevel": "Low", "scoringStandard": "按价格异常、指标集中度、公司关联线索综合计分", "scoringBreakdown": [{"dimension": "价格与排序异常", "points": 5, "evidence": ["示例"]}, {"dimension": "集中度指标", "points": 3, "evidence": ["示例"]}, {"dimension": "公司关联线索", "points": 2, "evidence": ["示例"]}], "keyEvidence": ["非围标"], "mostSuspiciousGroup": {"bidders": [], "reasoning": "非围标"}, "recommendedInvestigationSteps": ["核对投标联系人与注册信息", "复核报价形成依据"]}
+
+现在请分析下面这个项目的数据，并严格只输出一个 JSON：
+{"project": {"bid_ann_guid": "eb1050f1-4783-4bc8-abbb-af0ace6aa36b", "projguid": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f", "projname": "碳化硅衬底（6英寸）生产研发基地", "tenderee": "绿能发展有限公司"}, "announcement": {"bidnoticetitle": "滨海养老服务中心（医养结合型）改扩建项目招标公告", "begindatetime": "2024-01-22", "callbackenddatetime": "2024-02-05", "questionenddatetime": "2024-01-24", "answeringquestionenddatetime": "2024-01-29", "x_filleddeptname": "绿能发展有限公司-集团公司部门-招标采购部", "x_filledbyname": "王艳"}, "bidders": [{"x_providername": "远景规划设计院//晨光建设集团", "x_price": 63576.822137, "versionnumber": "2024-01-23T02:09:16.000+08:00", "x_isqualified": 0, "x_biddercontact": 13144332211}, {"x_providername": "蓝天科技有限公司//中恒建筑有限公司", "x_price": 98174.192329, "versionnumber": "2024-01-22T02:09:16.000+08:00", "x_isqualified": 0, "x_biddercontact": 13987654321}, {"x_providername": "金信工程设计//中恒建筑有限公司", "x_price": 115118.968321, "versionnumber": "2024-01-23T02:09:16.000+08:00", "x_isqualified": 0, "x_biddercontact": 18144332211}, {"x_providername": "鼎盛建筑有限公司", "x_price": 77757.292301, "versionnumber": "2024-01-24T02:09:16.000+08:00", "x_isqualified": 1, "x_biddercontact": 18322334455}, {"x_providername": "恒信工程设计//华宇建设集团", "x_price": 117807.83834, "versionnumber": "2024-01-23T02:09:16.000+08:00", "x_isqualified": 0, "x_biddercontact": 18088776655}], "indicators": {"rd": 0.5681889846875687, "cv_losing": 0.2529385880315095, "price_cv_all": 0.2492432290394097, "contact_dup_count": 0, "phone_dup_count": 0, "email_dup_count": 0, "wins": [1, 0, 0, 0, 0]}}

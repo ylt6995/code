@@ -1,0 +1,26 @@
+{
+  "val": {
+    "threshold": 63,
+    "tp": 4,
+    "fp": 16,
+    "fn": 0,
+    "tn": 20,
+    "accuracy": 0.6,
+    "precision": 0.2,
+    "recall": 1.0,
+    "f1": 0.33333333333333337,
+    "positive_rate": 0.5
+  },
+  "test": {
+    "threshold": 63,
+    "tp": 4,
+    "fp": 26,
+    "fn": 0,
+    "tn": 10,
+    "accuracy": 0.35,
+    "precision": 0.13333333333333333,
+    "recall": 1.0,
+    "f1": 0.23529411764705882,
+    "positive_rate": 0.75
+  }
+}

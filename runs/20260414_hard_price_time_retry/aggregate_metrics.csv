@@ -1,0 +1,2 @@
+﻿provider,method,seed,val_recall_target,best_threshold_by_val_recall,val_accuracy,val_precision,val_recall,val_f1,test_accuracy,test_precision,test_recall,test_f1
+zhipu,cot,0,0.9,50.0,0.6666666666666666,0.26666666666666666,0.6666666666666666,0.3809523809523809,0.575,0.5882352941176471,0.5,0.5405405405405405

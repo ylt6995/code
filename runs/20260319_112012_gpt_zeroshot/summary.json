@@ -1,0 +1,447 @@
+{
+  "run_id": "20260319_112012",
+  "data": "data\\all_data.xlsx",
+  "split_seed": 42,
+  "prompt_seeds": [
+    1867825,
+    419610,
+    4614226,
+    4108603,
+    3744854,
+    2341057,
+    1719583,
+    9149732,
+    1458591,
+    9906820
+  ],
+  "providers": [
+    "gpt"
+  ],
+  "methods": [
+    "zero"
+  ],
+  "fewshot_k_per_class": 2,
+  "cache_path": "runs\\cache\\llm_cache.jsonl",
+  "dry_run": false,
+  "mock": false,
+  "llm_settings": {
+    "gpt": {
+      "provider": "gpt",
+      "api_key": "sk-0D06WSzBVOfA3v11Dqmb2F0Pc6Wkudz44uxyNyA3ozOrsDXe",
+      "base_url": "https://api.chatanywhere.tech/v1",
+      "model": "gpt-4o-mini",
+      "temperature": 0.1,
+      "top_p": 0.9,
+      "timeout_s": 300.0,
+      "max_tokens": 6000
+    }
+  },
+  "retry": {
+    "max_retries": 6,
+    "backoff_s": [
+      2,
+      4,
+      8,
+      16,
+      32,
+      60
+    ]
+  },
+  "results": [
+    {
+      "provider": "gpt",
+      "method": "zero",
+      "val_summary": {
+        "recall_mean": 1.0,
+        "recall_min": 1.0,
+        "recall_max": 1.0,
+        "accuracy_mean": 0.545,
+        "precision_mean": 0.1889037038849934,
+        "f1_mean": 0.3162741694975578,
+        "threshold_mean": 60.3
+      },
+      "test_summary": {
+        "recall_mean": 0.9,
+        "recall_min": 0.5,
+        "recall_max": 1.0,
+        "accuracy_mean": 0.39249999999999996,
+        "precision_mean": 0.1317560860192439,
+        "f1_mean": 0.2290353693309637,
+        "threshold_mean": 60.3
+      },
+      "per_seed": [
+        {
+          "seed": 1867825,
+          "best_threshold": 63,
+          "val": {
+            "threshold": 63,
+            "tp": 4,
+            "fp": 21,
+            "fn": 0,
+            "tn": 15,
+            "accuracy": 0.475,
+            "precision": 0.16,
+            "recall": 1.0,
+            "f1": 0.2758620689655173,
+            "positive_rate": 0.625
+          },
+          "test": {
+            "threshold": 63,
+            "tp": 3,
+            "fp": 19,
+            "fn": 1,
+            "tn": 17,
+            "accuracy": 0.5,
+            "precision": 0.13636363636363635,
+            "recall": 0.75,
+            "f1": 0.23076923076923075,
+            "positive_rate": 0.55
+          }
+        },
+        {
+          "seed": 419610,
+          "best_threshold": 64,
+          "val": {
+            "threshold": 64,
+            "tp": 4,
+            "fp": 16,
+            "fn": 0,
+            "tn": 20,
+            "accuracy": 0.6,
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.33333333333333337,
+            "positive_rate": 0.5
+          },
+          "test": {
+            "threshold": 64,
+            "tp": 4,
+            "fp": 26,
+            "fn": 0,
+            "tn": 10,
+            "accuracy": 0.35,
+            "precision": 0.13333333333333333,
+            "recall": 1.0,
+            "f1": 0.23529411764705882,
+            "positive_rate": 0.75
+          }
+        },
+        {
+          "seed": 4614226,
+          "best_threshold": 56,
+          "val": {
+            "threshold": 56,
+            "tp": 4,
+            "fp": 14,
+            "fn": 0,
+            "tn": 22,
+            "accuracy": 0.65,
+            "precision": 0.2222222222222222,
+            "recall": 1.0,
+            "f1": 0.3636363636363636,
+            "positive_rate": 0.45
+          },
+          "test": {
+            "threshold": 56,
+            "tp": 4,
+            "fp": 21,
+            "fn": 0,
+            "tn": 15,
+            "accuracy": 0.475,
+            "precision": 0.16,
+            "recall": 1.0,
+            "f1": 0.2758620689655173,
+            "positive_rate": 0.625
+          }
+        },
+        {
+          "seed": 4108603,
+          "best_threshold": 56,
+          "val": {
+            "threshold": 56,
+            "tp": 4,
+            "fp": 16,
+            "fn": 0,
+            "tn": 20,
+            "accuracy": 0.6,
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.33333333333333337,
+            "positive_rate": 0.5
+          },
+          "test": {
+            "threshold": 56,
+            "tp": 4,
+            "fp": 22,
+            "fn": 0,
+            "tn": 14,
+            "accuracy": 0.45,
+            "precision": 0.15384615384615385,
+            "recall": 1.0,
+            "f1": 0.2666666666666667,
+            "positive_rate": 0.65
+          }
+        },
+        {
+          "seed": 3744854,
+          "best_threshold": 53,
+          "val": {
+            "threshold": 53,
+            "tp": 4,
+            "fp": 34,
+            "fn": 0,
+            "tn": 2,
+            "accuracy": 0.15,
+            "precision": 0.10526315789473684,
+            "recall": 1.0,
+            "f1": 0.1904761904761905,
+            "positive_rate": 0.95
+          },
+          "test": {
+            "threshold": 53,
+            "tp": 4,
+            "fp": 35,
+            "fn": 0,
+            "tn": 1,
+            "accuracy": 0.125,
+            "precision": 0.10256410256410256,
+            "recall": 1.0,
+            "f1": 0.18604651162790695,
+            "positive_rate": 0.975
+          }
+        },
+        {
+          "seed": 2341057,
+          "best_threshold": 63,
+          "val": {
+            "threshold": 63,
+            "tp": 4,
+            "fp": 13,
+            "fn": 0,
+            "tn": 23,
+            "accuracy": 0.675,
+            "precision": 0.23529411764705882,
+            "recall": 1.0,
+            "f1": 0.38095238095238093,
+            "positive_rate": 0.425
+          },
+          "test": {
+            "threshold": 63,
+            "tp": 4,
+            "fp": 24,
+            "fn": 0,
+            "tn": 12,
+            "accuracy": 0.4,
+            "precision": 0.14285714285714285,
+            "recall": 1.0,
+            "f1": 0.25,
+            "positive_rate": 0.7
+          }
+        },
+        {
+          "seed": 1719583,
+          "best_threshold": 65,
+          "val": {
+            "threshold": 65,
+            "tp": 4,
+            "fp": 15,
+            "fn": 0,
+            "tn": 21,
+            "accuracy": 0.625,
+            "precision": 0.21052631578947367,
+            "recall": 1.0,
+            "f1": 0.34782608695652173,
+            "positive_rate": 0.475
+          },
+          "test": {
+            "threshold": 65,
+            "tp": 2,
+            "fp": 17,
+            "fn": 2,
+            "tn": 19,
+            "accuracy": 0.525,
+            "precision": 0.10526315789473684,
+            "recall": 0.5,
+            "f1": 0.17391304347826086,
+            "positive_rate": 0.475
+          }
+        },
+        {
+          "seed": 9149732,
+          "best_threshold": 63,
+          "val": {
+            "threshold": 63,
+            "tp": 4,
+            "fp": 16,
+            "fn": 0,
+            "tn": 20,
+            "accuracy": 0.6,
+            "precision": 0.2,
+            "recall": 1.0,
+            "f1": 0.33333333333333337,
+            "positive_rate": 0.5
+          },
+          "test": {
+            "threshold": 63,
+            "tp": 4,
+            "fp": 26,
+            "fn": 0,
+            "tn": 10,
+            "accuracy": 0.35,
+            "precision": 0.13333333333333333,
+            "recall": 1.0,
+            "f1": 0.23529411764705882,
+            "positive_rate": 0.75
+          }
+        },
+        {
+          "seed": 1458591,
+          "best_threshold": 64,
+          "val": {
+            "threshold": 64,
+            "tp": 4,
+            "fp": 18,
+            "fn": 0,
+            "tn": 18,
+            "accuracy": 0.55,
+            "precision": 0.18181818181818182,
+            "recall": 1.0,
+            "f1": 0.3076923076923077,
+            "positive_rate": 0.55
+          },
+          "test": {
+            "threshold": 64,
+            "tp": 3,
+            "fp": 21,
+            "fn": 1,
+            "tn": 15,
+            "accuracy": 0.45,
+            "precision": 0.125,
+            "recall": 0.75,
+            "f1": 0.21428571428571427,
+            "positive_rate": 0.6
+          }
+        },
+        {
+          "seed": 9906820,
+          "best_threshold": 56,
+          "val": {
+            "threshold": 56,
+            "tp": 4,
+            "fp": 19,
+            "fn": 0,
+            "tn": 17,
+            "accuracy": 0.525,
+            "precision": 0.17391304347826086,
+            "recall": 1.0,
+            "f1": 0.29629629629629634,
+            "positive_rate": 0.575
+          },
+          "test": {
+            "threshold": 56,
+            "tp": 4,
+            "fp": 28,
+            "fn": 0,
+            "tn": 8,
+            "accuracy": 0.3,
+            "precision": 0.125,
+            "recall": 1.0,
+            "f1": 0.2222222222222222,
+            "positive_rate": 0.8
+          }
+        }
+      ]
+    }
+  ],
+  "baseline_logit": {
+    "threshold": 0.9412542471348517,
+    "val": {
+      "tp": 4.0,
+      "fp": 0.0,
+      "fn": 0.0,
+      "tn": 36.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "accuracy": 1.0
+    },
+    "test": {
+      "tp": 0.0,
+      "fp": 0.0,
+      "fn": 4.0,
+      "tn": 36.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "accuracy": 0.9
+    }
+  },
+  "qualitative_case": {
+    "chosen_config": {
+      "provider": "gpt",
+      "method": "zero",
+      "seed": 4614226,
+      "tag": "gpt_zero_seed4614226"
+    },
+    "threshold_by_val_recall": 56,
+    "bid_ann_guid": "e2aa45a4-e02f-4d3f-82d5-ae09a38d62a4",
+    "baseline": {
+      "bid_ann_guid": "e2aa45a4-e02f-4d3f-82d5-ae09a38d62a4",
+      "label": 1,
+      "baseline_prob": 0.9118961983747755,
+      "baseline_pred": 0
+    },
+    "llm": {
+      "score": 65,
+      "riskLevel": "\"High\"",
+      "keyEvidence": "[\"中标价显著低于其他报价，且存在高管交叉任职\"]"
+    },
+    "indicators": {
+      "rd": 0.0904160396888241,
+      "cv_losing": 0.32410958911823884,
+      "price_cv_all": 0.31617785246991026,
+      "contact_dup_count": 0,
+      "phone_dup_count": 1,
+      "email_dup_count": 1,
+      "wins": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "bidders_brief": [
+      {
+        "x_providername": "泰合工程咨询",
+        "x_price": 81809.292214,
+        "versionnumber": "2025-04-05T09:00:00.000+08:00",
+        "x_isqualified": 1
+      },
+      {
+        "x_providername": "未来规划设计院",
+        "x_price": 145712.618942,
+        "versionnumber": "2025-04-05T09:00:30.000+08:00",
+        "x_isqualified": 0
+      },
+      {
+        "x_providername": "远景规划设计院",
+        "x_price": 76627.856225,
+        "versionnumber": "2025-04-05T09:01:00.000+08:00",
+        "x_isqualified": 0
+      },
+      {
+        "x_providername": "泰合工程咨询",
+        "x_price": 129695.901177,
+        "versionnumber": "2025-04-05T09:01:30.000+08:00",
+        "x_isqualified": 0
+      },
+      {
+        "x_providername": "鼎盛建筑有限公司//宏远建设集团",
+        "x_price": 79791.503433,
+        "versionnumber": "2025-04-05T09:02:00.000+08:00",
+        "x_isqualified": 0
+      }
+    ]
+  }
+}

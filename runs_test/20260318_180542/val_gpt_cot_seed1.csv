@@ -1,0 +1,17 @@
+﻿bid_ann_guid,projguid,label,score,pred,provider,model,method,seed,parse_status
+9872e381-26b4-44a5-8f52-123898a62e31,3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f,0,6,,gpt,unknown,cot,1,mock
+9038c15c-a049-4d15-8418-26cc10266714,3a4b5c6d-7e8f-9a0b-1c2d-3e4f5a6b7c8d,1,34,,gpt,unknown,cot,1,mock
+2fa7a714-3111-4f3b-a0fe-1fb3ea96506e,7a8b9c0d-1e2f-3a4b-5c6d-7e8f9a0b1c2d,0,3,,gpt,unknown,cot,1,mock
+3c41f5f5-2e9b-4c09-9937-d94b15f5183a,3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f,0,11,,gpt,unknown,cot,1,mock
+9514b930-2541-4617-8295-82e68919e436,c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f,0,11,,gpt,unknown,cot,1,mock
+4da4808f-0146-4090-8d0f-fa38a2abc82c,7a8b9c0d-1e2f-3a4b-5c6d-7e8f9a0b1c2d,0,11,,gpt,unknown,cot,1,mock
+f107df9a-b78d-4c57-a418-11111b98efd6,7c8d9e0f-1a2b-3c4d-5e6f-7a8b9c0d1e2f,0,3,,gpt,unknown,cot,1,mock
+60ede894-5e32-4f3a-95e2-31c1d60b5db1,7c8d9e0f-1a2b-3c4d-5e6f-7a8b9c0d1e2f,0,3,,gpt,unknown,cot,1,mock
+cc238400-4adf-4499-a5f3-4996377fb9b3,3a4b5c6d-7e8f-9a0b-1c2d-3e4f5a6b7c8d,1,50,,gpt,unknown,cot,1,mock
+ada69257-6541-485b-9ed1-c480072be24a,7a8b9c0d-1e2f-3a4b-5c6d-7e8f9a0b1c2d,0,6,,gpt,unknown,cot,1,mock
+3614c2ff-2231-4522-93bc-d12bfd06a9d5,5e6f7a8b-9c0d-1e2f-3a4b-5c6d7e8f9a0b,0,11,,gpt,unknown,cot,1,mock
+0848e786-c341-4a13-8712-e0b41a65a8a7,1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d,0,11,,gpt,unknown,cot,1,mock
+032000b7-a863-42ea-8cfc-ca0be589899d,3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f,0,3,,gpt,unknown,cot,1,mock
+419f919e-a93c-4294-81ce-14f1644c4289,7a8b9c0d-1e2f-3a4b-5c6d-7e8f9a0b1c2d,0,3,,gpt,unknown,cot,1,mock
+7be7d983-4cc8-4487-8e33-8fa0ca6142b9,5b6c7d8e-9f0a-1b2c-3d4e-5f6a7b8c9d0e,0,0,,gpt,unknown,cot,1,mock
+ba79a257-1dbd-4efe-a2e2-8e1cc827e1e7,1e2f3a4b-5c6d-7e8f-9a0b-1c2d3e4f5a6b,0,14,,gpt,unknown,cot,1,mock

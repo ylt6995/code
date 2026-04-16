@@ -1,0 +1,169 @@
+﻿provider,model,method,Prompt,ROC-AUC,PR-AUC,Precision,Recall,F1
+gpt,gpt-4o-mini,zero,"runs\20260321_180011_gpt_all\prompt_gpt_zero_seed419610.txt
+你是招投标审计与反围串标专家。你的任务是对单个招标项目的围标/串标风险进行量化评估。
+
+打分标准（总分 0-100，分数越高风险越高）：
+1) 价格与排序异常（0-35）：中标价显著低于其他报价；或存在规律性差值/比例；或多家报价高度贴近。
+2) 集中度指标（0-15）：CV（变异系数）越低越可疑；RD（最低价与次低价差/落败者标准差）越高越可疑。
+3) 报价时间/版本同步（0-10）：versionnumber 等字段高度相近或呈现异常同步。
+4) 公司关联线索（0-25）：高管/股东交叉任职；注册时间/地点相近；电话/邮箱重复。
+5) 其他强证据（0-15）：同一联系人、明显的掩护报价行为、与常识不符的报价结构等。
+
+风险等级建议：0-20 低；21-40 中；41-70 高；71-100 严重。
+
+输出要求：
+- 只输出一个合法 JSON，不要输出额外文本。
+- collusionSuspicionScore 必须是 0-100 的整数。
+- scoringStandard 用一句话概括本次打分依据（不要复述全部标准）。
+- scoringBreakdown 给出每个维度的得分与证据。
+
+JSON Schema：
+{
+  ""collusionSuspicionScore"": 0,
+  ""riskLevel"": ""Low|Medium|High|Critical"",
+  ""scoringStandard"": ""string"",
+  ""scoringBreakdown"": [
+    {""dimension"": ""string"", ""points"": 0, ""evidence"": [""string""]}
+  ],
+  ""keyEvidence"": [""string""],
+  ""mostSuspiciousGroup"": {""bidders"": [""string""], ""r…",0.620375,0.6162942805500575,0.5038461538461538,1.0,0.6700564971751413
+gpt,gpt-4o-mini,few,"runs\20260321_180011_gpt_all\prompt_gpt_few_seed419610.txt
+你是招投标审计与反围串标专家。你的任务是对单个招标项目的围标/串标风险进行量化评估。
+
+打分标准（总分 0-100，分数越高风险越高）：
+1) 价格与排序异常（0-35）：中标价显著低于其他报价；或存在规律性差值/比例；或多家报价高度贴近。
+2) 集中度指标（0-15）：CV（变异系数）越低越可疑；RD（最低价与次低价差/落败者标准差）越高越可疑。
+3) 报价时间/版本同步（0-10）：versionnumber 等字段高度相近或呈现异常同步。
+4) 公司关联线索（0-25）：高管/股东交叉任职；注册时间/地点相近；电话/邮箱重复。
+5) 其他强证据（0-15）：同一联系人、明显的掩护报价行为、与常识不符的报价结构等。
+
+风险等级建议：0-20 低；21-40 中；41-70 高；71-100 严重。
+
+输出要求：
+- 只输出一个合法 JSON，不要输出额外文本。
+- collusionSuspicionScore 必须是 0-100 的整数。
+- scoringStandard 用一句话概括本次打分依据（不要复述全部标准）。
+- scoringBreakdown 给出每个维度的得分与证据。
+
+JSON Schema：
+{
+  ""collusionSuspicionScore"": 0,
+  ""riskLevel"": ""Low|Medium|High|Critical"",
+  ""scoringStandard"": ""string"",
+  ""scoringBreakdown"": [
+    {""dimension"": ""string"", ""points"": 0, ""evidence"": [""string""]}
+  ],
+  ""keyEvidence"": [""string""],
+  ""mostSuspiciousGroup"": {""bidders"": [""string""], ""r…",0.63275,0.6280826500543255,0.5354595404595405,0.885,0.6585725951907595
+gpt,gpt-4o-mini,cot,"runs\20260321_180011_gpt_all\prompt_gpt_cot_seed419610.txt
+你是招投标审计与反围串标专家。你的任务是对单个招标项目的围标/串标风险进行量化评估。
+
+打分标准（总分 0-100，分数越高风险越高）：
+1) 价格与排序异常（0-35）：中标价显著低于其他报价；或存在规律性差值/比例；或多家报价高度贴近。
+2) 集中度指标（0-15）：CV（变异系数）越低越可疑；RD（最低价与次低价差/落败者标准差）越高越可疑。
+3) 报价时间/版本同步（0-10）：versionnumber 等字段高度相近或呈现异常同步。
+4) 公司关联线索（0-25）：高管/股东交叉任职；注册时间/地点相近；电话/邮箱重复。
+5) 其他强证据（0-15）：同一联系人、明显的掩护报价行为、与常识不符的报价结构等。
+
+风险等级建议：0-20 低；21-40 中；41-70 高；71-100 严重。
+
+输出要求：
+- 只输出一个合法 JSON，不要输出额外文本。
+- collusionSuspicionScore 必须是 0-100 的整数。
+- scoringStandard 用一句话概括本次打分依据（不要复述全部标准）。
+- scoringBreakdown 给出每个维度的得分与证据。
+
+JSON Schema：
+{
+  ""collusionSuspicionScore"": 0,
+  ""riskLevel"": ""Low|Medium|High|Critical"",
+  ""scoringStandard"": ""string"",
+  ""scoringBreakdown"": [
+    {""dimension"": ""string"", ""points"": 0, ""evidence"": [""string""]}
+  ],
+  ""keyEvidence"": [""string""],
+  ""mostSuspiciousGroup"": {""bidders"": [""string""], ""r…",0.5965,0.6300456439799682,0.49624819624819627,0.875,0.6292353087164407
+zhipu,glm-4.7,zero,"runs\20260322_001430_zhipu_all\prompt_zhipu_zero_seed0.txt
+你是招投标审计与反围串标专家。你的任务是对单个招标项目的围标/串标风险进行量化评估。
+
+打分标准（总分 0-100，分数越高风险越高）：
+1) 价格与排序异常（0-35）：中标价显著低于其他报价；或存在规律性差值/比例；或多家报价高度贴近。
+2) 集中度指标（0-15）：CV（变异系数）越低越可疑；RD（最低价与次低价差/落败者标准差）越高越可疑。
+3) 报价时间/版本同步（0-10）：versionnumber 等字段高度相近或呈现异常同步。
+4) 公司关联线索（0-25）：高管/股东交叉任职；注册时间/地点相近；电话/邮箱重复。
+5) 其他强证据（0-15）：同一联系人、明显的掩护报价行为、与常识不符的报价结构等。
+
+风险等级建议：0-20 低；21-40 中；41-70 高；71-100 严重。
+
+输出要求：
+- 只输出一个合法 JSON，不要输出额外文本。
+- collusionSuspicionScore 必须是 0-100 的整数。
+- scoringStandard 用一句话概括本次打分依据（不要复述全部标准）。
+- scoringBreakdown 给出每个维度的得分与证据。
+
+JSON Schema：
+{
+  ""collusionSuspicionScore"": 0,
+  ""riskLevel"": ""Low|Medium|High|Critical"",
+  ""scoringStandard"": ""string"",
+  ""scoringBreakdown"": [
+    {""dimension"": ""string"", ""points"": 0, ""evidence"": [""string""]}
+  ],
+  ""keyEvidence"": [""string""],
+  ""mostSuspiciousGroup"": {""bidders"": [""string""], ""r…",0.58375,0.6355427937569137,0.5185185185185185,0.7,0.5957446808510639
+zhipu,glm-4.7,few,"runs\20260323_231515_new_zhipu_fewshot\prompt_zhipu_few_seed0.txt
+你是招投标审计与反围串标专家。你的任务是对单个招标项目的围标/串标风险进行量化评估。
+
+打分标准（总分 0-100，分数越高风险越高）：
+1) 价格与排序异常（0-35）：中标价显著低于其他报价；或存在规律性差值/比例；或多家报价高度贴近。
+2) 集中度指标（0-15）：CV（变异系数）越低越可疑；RD（最低价与次低价差/落败者标准差）越高越可疑。
+3) 报价时间/版本同步（0-10）：versionnumber 等字段高度相近或呈现异常同步。
+4) 公司关联线索（0-25）：高管/股东交叉任职；注册时间/地点相近；电话/邮箱重复。
+5) 其他强证据（0-15）：同一联系人、明显的掩护报价行为、与常识不符的报价结构等。
+
+风险等级建议：0-20 低；21-40 中；41-70 高；71-100 严重。
+
+输出要求：
+- 只输出一个合法 JSON，不要输出额外文本。
+- collusionSuspicionScore 必须是 0-100 的整数。
+- scoringStandard 用一句话概括本次打分依据（不要复述全部标准）。
+- scoringBreakdown 给出每个维度的得分与证据。
+
+JSON Schema：
+{
+  ""collusionSuspicionScore"": 0,
+  ""riskLevel"": ""Low|Medium|High|Critical"",
+  ""scoringStandard"": ""string"",
+  ""scoringBreakdown"": [
+    {""dimension"": ""string"", ""points"": 0, ""evidence"": [""string""]}
+  ],
+  ""keyEvidence"": [""string""],
+  ""mostSuspiciousGroup"": {""bidders"": [""string""], ""r…",0.6875,0.7404976189407054,0.631578947368421,0.6,0.6153846153846154
+zhipu,glm-4.7,cot,"runs\20260322_001430_zhipu_all\prompt_zhipu_cot_seed0.txt
+你是招投标审计与反围串标专家。你的任务是对单个招标项目的围标/串标风险进行量化评估。
+
+打分标准（总分 0-100，分数越高风险越高）：
+1) 价格与排序异常（0-35）：中标价显著低于其他报价；或存在规律性差值/比例；或多家报价高度贴近。
+2) 集中度指标（0-15）：CV（变异系数）越低越可疑；RD（最低价与次低价差/落败者标准差）越高越可疑。
+3) 报价时间/版本同步（0-10）：versionnumber 等字段高度相近或呈现异常同步。
+4) 公司关联线索（0-25）：高管/股东交叉任职；注册时间/地点相近；电话/邮箱重复。
+5) 其他强证据（0-15）：同一联系人、明显的掩护报价行为、与常识不符的报价结构等。
+
+风险等级建议：0-20 低；21-40 中；41-70 高；71-100 严重。
+
+输出要求：
+- 只输出一个合法 JSON，不要输出额外文本。
+- collusionSuspicionScore 必须是 0-100 的整数。
+- scoringStandard 用一句话概括本次打分依据（不要复述全部标准）。
+- scoringBreakdown 给出每个维度的得分与证据。
+
+JSON Schema：
+{
+  ""collusionSuspicionScore"": 0,
+  ""riskLevel"": ""Low|Medium|High|Critical"",
+  ""scoringStandard"": ""string"",
+  ""scoringBreakdown"": [
+    {""dimension"": ""string"", ""points"": 0, ""evidence"": [""string""]}
+  ],
+  ""keyEvidence"": [""string""],
+  ""mostSuspiciousGroup"": {""bidders"": [""string""], ""r…",0.72,0.7700623363835455,0.5,1.0,0.6666666666666666

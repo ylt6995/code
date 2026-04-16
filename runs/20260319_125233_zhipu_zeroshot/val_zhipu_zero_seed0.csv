@@ -1,0 +1,41 @@
+﻿bid_ann_guid,projguid,label,score,pred,provider,model,method,seed,parse_status,riskLevel,keyEvidence
+31ae61e0-aea5-4566-bcf4-6b8aef914089,7da5bfb4-1c61-42bb-9cd2-83875079b564,1,70,,zhipu,glm-4.7-flash,zero,0,,"""High""","[""4家投标人共用同一联系人电话"", ""宏远建设与经纬建筑设计注册地址完全一致"", ""周浩、王建国在多家公司任职"", ""经纬建筑设计中标价最低且与次低价接近"", ""版本号提交时间高度同步""]"
+f5c25825-43e1-4f14-a70d-b56c85587b4d,d7dbfc25-defc-4dfc-8a37-d8d5fc8e6309,0,52,,zhipu,glm-4.7-flash,zero,0,,"""High""","[""cv_losing 极低 (0.047)"", ""中建8报价显著偏低"", ""中建12与中建8名称相似""]"
+119dd67a-a22b-4f93-b888-88bfac7fe28f,5ce9e02c-4efc-4bf8-ae60-5d922717e029,0,79,,zhipu,glm-4.7-flash,zero,0,,"""Critical""","[""报价高度趋同，CV仅为2.1%"", ""两家名称完全相同的公司参与投标"", ""两家公司报价时间戳完全一致"", ""落败者报价变异系数极低(1.95%)""]"
+b99ac1cc-63fb-4957-aa0f-bf643920a25a,7b8ea3d0-cf47-40fd-8681-cb1b8d646da1,0,0,,zhipu,glm-4.7-flash,zero,0,empty_response,,
+e55ac7e5-448a-4c2e-aa69-9f1a664ac9e7,5b6c7d8e-9f0a-1b2c-3d4e-5f6a7b8c9d0e,0,0,,zhipu,glm-4.7-flash,zero,0,empty_response,,
+879fa6f4-997f-4753-81d2-d075b25811dd,3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f,0,80,,zhipu,glm-4.7-flash,zero,0,,"""Critical""","[""投标人名称重复：鼎盛建筑有限公司同时出现在两个投标人信息中"", ""联系人号码重复：金信工程设计与泰合工程咨询使用同一号码18655667788"", ""版本号高度同步：除一家外，其余四家版本号完全一致"", ""中标价异常偏低：50886.17元显著低于次低价67872.85元""]"
+fa4a68c2-21e3-4911-a64a-dcaf148460fb,99e5f749-b269-461a-be3b-12b26b87c4ea,0,75,,zhipu,glm-4.7-flash,zero,0,,"""Critical""","[""投标人1与投标人5名称完全一致"", ""中标价(4118万)显著低于其他报价"", ""同一家公司同时中标(最低价)和作为第二中标单位(次低价)""]"
+71313384-c6b5-4034-8016-80d30fc65a47,d9f027de-509f-433c-9011-a7888850f303,0,0,,zhipu,glm-4.7-flash,zero,0,empty_response,,
+542f371a-c9fb-4187-a4e8-072620fd69fc,bd641cd7-81d2-4608-bd75-5a314f4da5da,0,64,,zhipu,glm-4.7-flash,zero,0,,"""High""","[""中标价显著低于其他报价"", ""versionnumber完全相同"", ""落败报价高度集中"", ""中标价最低""]"
+9dfbe3ac-9eca-40ea-8224-0a23bb0dfb80,3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f,0,63,,zhipu,glm-4.7-flash,zero,0,,"""High""","[""中标价最低"", ""报价高度集中"", ""上传时间完全一致"", ""变异系数极低""]"
+5ee663ec-18b6-4711-abc8-c512dc8e4269,0a93ce8b-806e-4892-a635-1087b4192c8a,0,70,,zhipu,glm-4.7-flash,zero,0,,"""High""","[""Winner and 2nd place prices are nearly identical"", ""Duplicate company name '经纬建筑设计'"", ""Low CV of losing bids (0.05)""]"
+f603307f-6efe-46ae-b013-eb942a63f2a0,7a8b9c0d-1e2f-3a4b-5c6d-7e8f9a0b1c2d,1,0,,zhipu,glm-4.7-flash,zero,0,empty_response,,
+711cffc7-35a0-4ff7-8589-b6e88f23a424,edbef75d-afc8-4d2e-9d56-f1fb1c0ebe8d,1,0,,zhipu,glm-4.7-flash,zero,0,empty_response,,
+20d49ca2-b8fc-4777-ba51-c2c972888ac6,c4d5ce89-3cd9-43ad-a341-46bd3fcbd5d9,0,76,,zhipu,glm-4.7-flash,zero,0,,"""Critical""","[""中标价显著低于其他报价"", ""落败者报价高度集中"", ""注册地址疑似虚假"", ""投标人名称格式异常""]"
+cfe7d883-bba9-4c6c-a630-1e78dc0a3842,5ac24c0f-2991-4eb9-82a6-8f53bebf1ba6,0,68,,zhipu,glm-4.7-flash,zero,0,,"""High""","[""中标价最高，最低价显著偏低"", ""落败者报价变异系数极低（0.0618）"", ""注册地址存在高度相似的地名和代码""]"
+0848e786-c341-4a13-8712-e0b41a65a8a7,1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d,0,75,,zhipu,glm-4.7-flash,zero,0,,"""Critical""","[""所有投标文件提交时间完全一致（versionnumber相同）"", ""中标方（未来规划设计院）与落败方（大地工程设计//星耀科技有限公司）共用联系电话18887654321"", ""中标价显著低于其他报价"", ""两家公司名称均包含'大地工程设计'""]"
+ec6ecac1-731e-4f88-9cc6-a2ec91a9ba33,fc0b281f-eebe-4554-a88c-ad2db6b7a2cf,0,65,,zhipu,glm-4.7-flash,zero,0,,"""High""","[""中标价与次低价差距仅1.4%"", ""次标段名称包含'宏远建设集团'，疑似关联方"", ""后三名报价作为掩护报价，价格显著拉开"", ""价格变异系数极低，反映价格被人为控制""]"
+c6075fe4-a603-48fa-896c-19e3f1fcc161,9c0d1e2f-3a4b-5c6d-7e8f-9a0b1c2d3e4f,0,58,,zhipu,glm-4.7-flash,zero,0,,"""High""","[""版本号完全一致（泰合、星辰、宏远）"", ""中标价显著低于其他报价"", ""名称中包含重复的'宏远建设集团'"", ""注册地信息疑似虚假""]"
+1f19ed3f-52e3-4ada-a9ff-008865abbc8b,630dd00b-5dc2-4b51-8f6a-b0b4a25ecc56,0,61,,zhipu,glm-4.7-flash,zero,0,,"""High""","[""明日规划设计院出现两次报价"", ""落败者报价变异系数极低 (0.057)"", ""中标价与次低价差距极小"", ""明日规划设计院高价报价作为掩护""]"
+0f99dc88-56cf-47b3-ae9c-8785f773d434,5e6f7a8b-9c0d-1e2f-3a4b-5c6d7e8f9a0b,0,71,,zhipu,glm-4.7-flash,zero,0,,"""Critical""","[""versionnumber完全一致"", ""中标人名称包含另一投标人名称"", ""RD和CV指标极低"", ""中标价为最低价""]"
+c627b2f5-7912-4cde-8c0b-13eacdd73f84,1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d,0,0,,zhipu,glm-4.7-flash,zero,0,empty_response,,
+1b15fb10-829b-440f-ad96-bd8b51c44f16,5b6c7d8e-9f0a-1b2c-3d4e-5f6a7b8c9d0e,0,0,,zhipu,glm-4.7-flash,zero,0,empty_response,,
+f107df9a-b78d-4c57-a418-11111b98efd6,7c8d9e0f-1a2b-3c4d-5e6f-7a8b9c0d1e2f,0,64,,zhipu,glm-4.7-flash,zero,0,,"""High""","[""投标人2、3、4提交时间戳完全一致"", ""投标人3与投标人5共享联系电话"", ""落败者报价高度集中""]"
+863b975f-5b8c-4d96-babb-a2e87c0ea43b,3fbf784d-7b4c-4d90-8192-dbd66330a292,0,0,,zhipu,glm-4.7-flash,zero,0,empty_response,,
+255b36a1-6af2-4aec-8a50-c63ddeec76bd,c83f0002-9cf7-4016-a26c-bb58acf423a4,0,79,,zhipu,glm-4.7-flash,zero,0,,"""Critical""","[""RD指标极低(0.006)表明最低价与次低价几乎一致"", ""注册地址存在大量虚假地名(郑州县/桂花市/张家港县/芳县)"", ""中标单位与次低价单位名称结构相似且价格极度接近""]"
+419f919e-a93c-4294-81ce-14f1644c4289,7a8b9c0d-1e2f-3a4b-5c6d-7e8f9a0b1c2d,0,66,,zhipu,glm-4.7-flash,zero,0,,"""High""","[""中海建筑与晨光建设集团共享同一联系人电话"", ""最低价与次低价报价仅差300元"", ""多家投标人版本号完全一致"", ""RD指标异常低（0.0107）""]"
+85cd5c60-5e22-40d3-be49-342f8f5f7fdf,aa18733a-5ab4-40ae-a3cf-2cecfbeda705,0,64,,zhipu,glm-4.7-flash,zero,0,,"""High""","[""鼎盛建筑有限公司重复出现且版本号完全一致"", ""所有报价变异系数(CV)极低(0.0649)，价格高度集中"", ""远景规划设计院报价异常偏低""]"
+de0b45d4-944e-43df-8ad4-7ae682328401,3ce6d731-9163-496a-9d4e-d66f45aefc77,0,96,,zhipu,glm-4.7-flash,zero,0,,"""Critical""","[""省建筑工程集团有限公司出现两次且报价不同"", ""versionnumber高度同步（中恒与中铁16均为08:00:00）"", ""注册信息包含大量虚构地名和联系方式"", ""价格变异系数极低（0.059）""]"
+a8dfaf79-bde3-43a9-951e-54922b0e5ee4,3ba516c7-8abd-4695-a389-7e3d86d97aae,0,82,,zhipu,glm-4.7-flash,zero,0,,"""Critical""","[""报价变异系数极低(3.03%)"", ""落败者报价高度一致(CV=0.029)"", ""4家投标单位资质状态为0，仅中标单位为1"", ""注册地址存在明显地理逻辑错误(如上海包含辽阳)"", ""投标时间高度同步(集中在1月1日)""]"
+ba79a257-1dbd-4efe-a2e2-8e1cc827e1e7,1e2f3a4b-5c6d-7e8f-9a0b-1c2d3e4f5a6b,0,66,,zhipu,glm-4.7-flash,zero,0,,"""High""","[""versionnumber完全一致"", ""双公司名称异常"", ""极低掩护报价"", ""同公司名称重复出现"", ""中标价非最低价""]"
+433a5ee5-7327-4fc4-b6e7-39b5b3531096,b27bbcd7-478d-44db-97c3-ba75d75f6a8e,0,0,,zhipu,glm-4.7-flash,zero,0,empty_response,,
+50d8486e-5ee1-4412-9977-88b3dea9b6c6,2ce0c2a6-643b-446e-8e1f-bdf1267d8088,0,68,,zhipu,glm-4.7-flash,zero,0,,"""High""","[""前三名报价高度集中且呈阶梯分布（30.44M, 30.59M, 31.28M），第二名、第三名被判定为不合格，仅保留中间价中标"", ""投标人名称中包含异常符号‘//’（如‘中海建筑有限公司//星耀科技有限公司’）"", ""变异系数CV_losing仅为0.057，表明落败者报价极度接近""]"
+9038c15c-a049-4d15-8418-26cc10266714,3a4b5c6d-7e8f-9a0b-1c2d-3e4f5a6b7c8d,1,72,,zhipu,glm-4.7-flash,zero,0,,"""Critical""","[""星辰科技与中创共享高管吴玲、宋兵"", ""versionnumber时间戳按价格排序"", ""最低价报价变异系数极低"", ""疑似马甲公司名称格式""]"
+e8b4d560-de26-4fb3-a56b-7c32d595b67a,64f65e1c-1472-4d46-b991-af48381213ff,0,74,,zhipu,glm-4.7-flash,zero,0,,"""Critical""","[""中标单位为废标单位（x_isqualified=0）"", ""注册地址异常（如龙市、淑珍市）"", ""报价高度集中（RD=0.04）"", ""中标单位与次低价单位报价差值极小""]"
+e80e4613-544b-4d60-9c8d-5cc1a0ffec97,92b21a20-c356-414c-bcb2-e10eac0fbb62,0,65,,zhipu,glm-4.7-flash,zero,0,,"""High""","[""中标价为最高价"", ""落败者报价高度集中(CV低)"", ""中海、东方、中建4报价时间同步"", ""注册地址异常伪造"", ""唯一中标者通过资格审查""]"
+97078357-c131-48fc-82ca-4e96c92c05d0,5b6c7d8e-9f0a-1b2c-3d4e-5f6a7b8c9d0e,0,0,,zhipu,glm-4.7-flash,zero,0,empty_response,,
+fb8c4711-a8e2-4556-b8e9-faac1d1b3b52,1e2f3a4b-5c6d-7e8f-9a0b-1c2d3e4f5a6b,0,0,,zhipu,glm-4.7-flash,zero,0,empty_response,,
+17ec18c6-a324-475b-83a9-f36d8d6d6741,3a4b5c6d-7e8f-9a0b-1c2d-3e4f5a6b7c8d,0,79,,zhipu,glm-4.7-flash,zero,0,,"""Critical""","[""同一公司名称重复投标（一胜一负）"", ""投标时间毫秒级完全同步"", ""同一母公司前缀下的多家子公司投标"", ""中标价为第二低价且最低价被废标""]"
+9ec2965a-4fec-466e-a28c-3843d585a6bf,a9b0c1d2-e3f4-4a5b-6c7d-8e9f0a1b2c3d,0,81,,zhipu,glm-4.7-flash,zero,0,,"""Critical""","[""versionnumber高度同步"", ""投标人4和5为同一联合体且中标"", ""中海建筑有限公司与未来规划设计院报价高度趋同"", ""中标价显著低于其他有效报价""]"
+764b9eb7-cf92-4bbb-aee2-d6a1efc129b1,955367c5-32d4-48ca-ad6f-ce24fe6b8bf5,0,79,,zhipu,glm-4.7-flash,zero,0,,"""Critical""","[""入围报价极窄（CV=0.074, RD=1.58）"", ""前三个投标人报价时间相差仅7小时"", ""3家投标人注册地均在湖南省"", ""泰合与东方股东名册中均出现'杜宁'"", ""中标价最高""]"

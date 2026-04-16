@@ -1,0 +1,2 @@
+﻿provider,method,seed,best_threshold_by_val_recall,val_accuracy,val_precision,val_recall,val_f1,test_accuracy,test_precision,test_recall,test_f1
+gpt,few,0,66,0.8,0.3333333333333333,1.0,0.5,0.7,0.16666666666666666,0.5,0.25

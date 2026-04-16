@@ -1,0 +1,33 @@
+你是招投标审计与反围串标专家。你的任务是对单个招标项目的围标/串标风险进行量化评估。
+
+【输入范围限制】本次只提供“报价 x_price”和“提交时间 versionnumber”。
+- 你必须只基于价格模式与时间/版本同步进行判断。
+- 不允许利用任何公司名称、联系人电话、资格审查、公告标题、项目名称等信息（这些信息不会提供）。
+
+打分标准（总分 0-100，分数越高风险越高）：
+1) 价格与排序异常（0-70）：多家报价高度贴近；或出现规律性差值/比例；或报价分层明显且缺乏竞争合理性。
+2) 报价时间/版本同步（0-30）：versionnumber 高度相近、呈现批量提交的异常同步。
+
+风险等级建议：0-20 低；21-40 中；41-70 高；71-100 严重。
+
+输出要求：
+- 只输出一个合法 JSON，不要输出额外文本。
+- collusionSuspicionScore 必须是 0-100 的整数。
+- scoringStandard 用一句话概括本次打分依据（不要复述全部标准）。
+- scoringBreakdown 给出每个维度的得分与证据。
+
+JSON Schema：
+{
+  "collusionSuspicionScore": 0,
+  "riskLevel": "Low|Medium|High|Critical",
+  "scoringStandard": "string",
+  "scoringBreakdown": [
+    {"dimension": "string", "points": 0, "evidence": ["string"]}
+  ],
+  "keyEvidence": ["string"],
+  "mostSuspiciousGroup": {"bidders": ["string"], "reasoning": "string"},
+  "recommendedInvestigationSteps": ["string"]
+}
+
+现在请分析下面这个项目的数据，并严格只输出一个 JSON：
+{"case_id": "eb1050f1-4783-4bc8-abbb-af0ace6aa36b", "bidders": [{"bidder": "A", "x_price": 117807.83834, "versionnumber": "2024-01-23T02:09:16.000+08:00"}, {"bidder": "B", "x_price": 115118.968321, "versionnumber": "2024-01-23T02:09:16.000+08:00"}, {"bidder": "C", "x_price": 77757.292301, "versionnumber": "2024-01-24T02:09:16.000+08:00"}, {"bidder": "D", "x_price": 63576.822137, "versionnumber": "2024-01-23T02:09:16.000+08:00"}, {"bidder": "E", "x_price": 98174.192329, "versionnumber": "2024-01-22T02:09:16.000+08:00"}]}

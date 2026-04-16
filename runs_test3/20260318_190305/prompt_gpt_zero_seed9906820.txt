@@ -1,0 +1,32 @@
+你是招投标审计与反围串标专家。你的任务是对单个招标项目的围标/串标风险进行量化评估。
+
+打分标准（总分 0-100，分数越高风险越高）：
+1) 价格与排序异常（0-35）：中标价显著低于其他报价；或存在规律性差值/比例；或多家报价高度贴近。
+2) 集中度指标（0-15）：CV（变异系数）越低越可疑；RD（最低价与次低价差/落败者标准差）越高越可疑。
+3) 报价时间/版本同步（0-10）：versionnumber 等字段高度相近或呈现异常同步。
+4) 公司关联线索（0-25）：高管/股东交叉任职；注册时间/地点相近；电话/邮箱重复。
+5) 其他强证据（0-15）：同一联系人、明显的掩护报价行为、与常识不符的报价结构等。
+
+风险等级建议：0-20 低；21-40 中；41-70 高；71-100 严重。
+
+输出要求：
+- 只输出一个合法 JSON，不要输出额外文本。
+- collusionSuspicionScore 必须是 0-100 的整数。
+- scoringStandard 用一句话概括本次打分依据（不要复述全部标准）。
+- scoringBreakdown 给出每个维度的得分与证据。
+
+JSON Schema：
+{
+  "collusionSuspicionScore": 0,
+  "riskLevel": "Low|Medium|High|Critical",
+  "scoringStandard": "string",
+  "scoringBreakdown": [
+    {"dimension": "string", "points": 0, "evidence": ["string"]}
+  ],
+  "keyEvidence": ["string"],
+  "mostSuspiciousGroup": {"bidders": ["string"], "reasoning": "string"},
+  "recommendedInvestigationSteps": ["string"]
+}
+
+现在请分析下面这个项目的数据，并严格只输出一个 JSON：
+{"project": {"bid_ann_guid": "9872e381-26b4-44a5-8f52-123898a62e31", "projguid": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f", "projname": "碳化硅衬底（6英寸）生产研发基地", "tenderee": "银河科技股份有限公司"}, "announcement": {"bidnoticetitle": "公立学校（中小学）校舍安全加固工程招标公告", "begindatetime": "2024-04-01", "callbackenddatetime": "2024-04-15", "questionenddatetime": "2024-04-03", "answeringquestionenddatetime": "2024-04-08", "x_filleddeptname": "银河科技股份有限公司-集团公司部门-招标采购部", "x_filledbyname": "张伟"}, "bidders": [{"x_providername": "宏远建设集团//大地工程设计", "x_price": 129065.533216, "versionnumber": "2024-04-02T02:09:16.000+08:00", "x_isqualified": 0, "x_biddercontact": 13477665544, "principals": [{"name": "陈楠", "position": "General Manager", "shareholding_ratio": 0.01}, {"name": "郑冬梅", "position": "Deputy General Manager", "shareholding_ratio": 0.04}], "shareholders": [{"name": "李楠", "shareholding_ratio": 0.08, "subscribed_capital": 650000}, {"name": "苏兰英", "shareholding_ratio": 0.24, "subscribed_capital": 420000}, {"name": "鲁秀珍", "shareholding_ratio": 0.23, "subscribed_capital": 630000}], "registration_time": "2016-08-14", "registration_place": "贵州省博市海陵汕尾街X座 561464", "registration_phone_numbers": ["13007867714"], "registration_emails": ["yonggu@example.org", "renyang@example.com"]}, {"x_providername": "大地工程设计//远景规划设计院", "x_price": 132772.872425, "versionnumber": "2024-04-02T02:09:16.000+08:00", "x_isqualified": 0, "x_biddercontact": 13266554433, "principals": [{"name": "周帅", "position": "General Manager", "shareholding_ratio": 0.06}, {"name": "石想", "position": "Deputy General Manager", "shareholding_ratio": 0.03}], "shareholders": [{"name": "苑坤", "shareholding_ratio": 0.19, "subscribed_capital": 770000}, {"name": "张淑英", "shareholding_ratio": 0.05, "subscribed_capital": 370000}], "registration_time": "2011-03-06", "registration_place": "上海市玉梅县静安王路G座 633700", "registration_phone_numbers": ["13659528656"], "registration_emails": ["guiying36@example.org"]}, {"x_providername": "未来规划设计院//泰合工程咨询", "x_price": 85861.065798, "versionnumber": "2024-04-02T02:09:16.000+08:00", "x_isqualified": 0, "x_biddercontact": 18088776655, "principals": [{"name": "田畅", "position": "General Manager", "shareholding_ratio": 0.0}, {"name": "刘建军", "position": "Deputy General Manager", "shareholding_ratio": 0.02}, {"name": "施丹丹", "position": "Director", "shareholding_ratio": 0.05}, {"name": "赵秀兰", "position": "Director", "shareholding_ratio": 0.04}], "shareholders": [{"name": "陈鹏", "shareholding_ratio": 0.02, "subscribed_capital": 200000}, {"name": "刘淑兰", "shareholding_ratio": 0.21, "subscribed_capital": 660000}], "registration_time": "2014-04-16", "registration_place": "澳门特别行政区淑华市山亭香港路a座 342043", "registration_phone_numbers": ["13170326124"], "registration_emails": ["longfang@example.net", "weiming@example.com", "tao30@example.net"]}, {"x_providername": "中恒建筑有限公司//大地工程设计", "x_price": 71941.183666, "versionnumber": "2024-04-02T02:09:16.000+08:00", "x_isqualified": 1, "x_biddercontact": 18599887766, "principals": [{"name": "邓英", "position": "General Manager", "shareholding_ratio": 0.06}, {"name": "殷东", "position": "Deputy General Manager", "shareholding_ratio": 0.02}, {"name": "苏峰", "position": "Director", "shareholding_ratio": 0.0}], "shareholders": [{"name": "任玉英", "shareholding_ratio": 0.13, "subscribed_capital": 540000}, {"name": "陈阳", "shareholding_ratio": 0.25, "subscribed_capital": 590000}], "registration_time": "2006-04-11", "registration_place": "北京市梧州市沙市陈街x座 346211", "registration_phone_numbers": ["13332660825", "15165060552"], "registration_emails": ["renqiang@example.org", "fang37@example.net"]}, {"x_providername": "明日规划设计院", "x_price": 59039.619524, "versionnumber": "2024-04-02T02:09:16.000+08:00", "x_isqualified": 0, "x_biddercontact": 18266554433, "principals": [{"name": "李淑珍", "position": "General Manager", "shareholding_ratio": 0.01}, {"name": "林亮", "position": "Deputy General Manager", "shareholding_ratio": 0.09}, {"name": "张小红", "position": "Director", "shareholding_ratio": 0.03}], "shareholders": [{"name": "吴莉", "shareholding_ratio": 0.1, "subscribed_capital": 130000}, {"name": "贾娜", "shareholding_ratio": 0.23, "subscribed_capital": 810000}, {"name": "张静", "shareholding_ratio": 0.14, "subscribed_capital": 740000}], "registration_time": "2016-10-04", "registration_place": "香港特别行政区惠州县东丽蒋街z座 902027", "registration_phone_numbers": ["13232969743", "18936094367", "18835443074"], "registration_emails": ["xguo@example.com"]}], "indicators": {"rd": 0.3632118626514769, "cv_losing": 0.3493223870724263, "price_cv_all": 0.35007315067212813, "contact_dup_count": 0, "phone_dup_count": 0, "email_dup_count": 0, "wins": [0, 1, 0, 0, 0]}}

@@ -1,0 +1,186 @@
+{
+  "run_id": "20260319_113856",
+  "data": "data\\all_data.xlsx",
+  "split_seed": 42,
+  "prompt_seeds": [
+    0
+  ],
+  "providers": [
+    "gpt"
+  ],
+  "methods": [
+    "few"
+  ],
+  "fewshot_k_per_class": 2,
+  "cache_path": "runs\\cache\\llm_cache.jsonl",
+  "dry_run": false,
+  "mock": false,
+  "llm_settings": {
+    "gpt": {
+      "provider": "gpt",
+      "api_key": "sk-0D06WSzBVOfA3v11Dqmb2F0Pc6Wkudz44uxyNyA3ozOrsDXe",
+      "base_url": "https://api.chatanywhere.tech/v1",
+      "model": "gpt-4o-mini",
+      "temperature": 0.1,
+      "top_p": 0.9,
+      "timeout_s": 300.0,
+      "max_tokens": 6000
+    }
+  },
+  "retry": {
+    "max_retries": 6,
+    "backoff_s": [
+      2,
+      4,
+      8,
+      16,
+      32,
+      60
+    ]
+  },
+  "results": [
+    {
+      "provider": "gpt",
+      "method": "few",
+      "val_summary": {
+        "recall_mean": 1.0,
+        "recall_min": 1.0,
+        "recall_max": 1.0,
+        "accuracy_mean": 0.8,
+        "precision_mean": 0.3333333333333333,
+        "f1_mean": 0.5,
+        "threshold_mean": 66.0
+      },
+      "test_summary": {
+        "recall_mean": 0.5,
+        "recall_min": 0.5,
+        "recall_max": 0.5,
+        "accuracy_mean": 0.7,
+        "precision_mean": 0.16666666666666666,
+        "f1_mean": 0.25,
+        "threshold_mean": 66.0
+      },
+      "per_seed": [
+        {
+          "seed": 0,
+          "best_threshold": 66,
+          "val": {
+            "threshold": 66,
+            "tp": 4,
+            "fp": 8,
+            "fn": 0,
+            "tn": 28,
+            "accuracy": 0.8,
+            "precision": 0.3333333333333333,
+            "recall": 1.0,
+            "f1": 0.5,
+            "positive_rate": 0.3
+          },
+          "test": {
+            "threshold": 66,
+            "tp": 2,
+            "fp": 10,
+            "fn": 2,
+            "tn": 26,
+            "accuracy": 0.7,
+            "precision": 0.16666666666666666,
+            "recall": 0.5,
+            "f1": 0.25,
+            "positive_rate": 0.3
+          }
+        }
+      ]
+    }
+  ],
+  "baseline_logit": {
+    "threshold": 0.9412542471348517,
+    "val": {
+      "tp": 4.0,
+      "fp": 0.0,
+      "fn": 0.0,
+      "tn": 36.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "accuracy": 1.0
+    },
+    "test": {
+      "tp": 0.0,
+      "fp": 0.0,
+      "fn": 4.0,
+      "tn": 36.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "accuracy": 0.9
+    }
+  },
+  "qualitative_case": {
+    "chosen_config": {
+      "provider": "gpt",
+      "method": "few",
+      "seed": 0,
+      "tag": "gpt_few_seed0"
+    },
+    "threshold_by_val_recall": 66,
+    "bid_ann_guid": "e2aa45a4-e02f-4d3f-82d5-ae09a38d62a4",
+    "baseline": {
+      "bid_ann_guid": "e2aa45a4-e02f-4d3f-82d5-ae09a38d62a4",
+      "label": 1,
+      "baseline_prob": 0.9118961983747755,
+      "baseline_pred": 0
+    },
+    "llm": {
+      "score": 70,
+      "riskLevel": "\"High\"",
+      "keyEvidence": "[\"存在明显的围标/串标迹象\"]"
+    },
+    "indicators": {
+      "rd": 0.0904160396888241,
+      "cv_losing": 0.32410958911823884,
+      "price_cv_all": 0.31617785246991026,
+      "contact_dup_count": 0,
+      "phone_dup_count": 1,
+      "email_dup_count": 1,
+      "wins": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "bidders_brief": [
+      {
+        "x_providername": "泰合工程咨询",
+        "x_price": 81809.292214,
+        "versionnumber": "2025-04-05T09:00:00.000+08:00",
+        "x_isqualified": 1
+      },
+      {
+        "x_providername": "未来规划设计院",
+        "x_price": 145712.618942,
+        "versionnumber": "2025-04-05T09:00:30.000+08:00",
+        "x_isqualified": 0
+      },
+      {
+        "x_providername": "远景规划设计院",
+        "x_price": 76627.856225,
+        "versionnumber": "2025-04-05T09:01:00.000+08:00",
+        "x_isqualified": 0
+      },
+      {
+        "x_providername": "泰合工程咨询",
+        "x_price": 129695.901177,
+        "versionnumber": "2025-04-05T09:01:30.000+08:00",
+        "x_isqualified": 0
+      },
+      {
+        "x_providername": "鼎盛建筑有限公司//宏远建设集团",
+        "x_price": 79791.503433,
+        "versionnumber": "2025-04-05T09:02:00.000+08:00",
+        "x_isqualified": 0
+      }
+    ]
+  }
+}

@@ -1,0 +1,4 @@
+﻿method,gpt_recall_mean,gpt_recall_std,glm_recall
+zero,1.0,0.0,
+few,0.885,0.14346892811104894,
+cot,0.875,0.14577379737113252,1.0

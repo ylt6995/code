@@ -1,0 +1,111 @@
+{
+  "run_id": "20260319_165646",
+  "data": "data\\all_data.xlsx",
+  "split_seed": 42,
+  "prompt_seeds": [
+    0
+  ],
+  "providers": [
+    "gpt"
+  ],
+  "methods": [
+    "zero"
+  ],
+  "fewshot_k_per_class": 2,
+  "cache_path": "runs\\cache\\llm_cache.jsonl",
+  "dry_run": false,
+  "mock": true,
+  "llm_settings": {},
+  "retry": {
+    "max_retries": 6,
+    "backoff_s": [
+      2,
+      4,
+      8,
+      16,
+      32,
+      60
+    ]
+  },
+  "threshold_selection": {
+    "strategy": "recall_at_least_then_max_precision",
+    "recall_target": 0.9
+  },
+  "results": [
+    {
+      "provider": "gpt",
+      "method": "zero",
+      "val_summary": {
+        "recall_mean": 1.0,
+        "recall_min": 1.0,
+        "recall_max": 1.0,
+        "accuracy_mean": 1.0,
+        "precision_mean": 1.0,
+        "f1_mean": 1.0,
+        "threshold_mean": 16.0
+      },
+      "test_summary": {
+        "recall_mean": 1.0,
+        "recall_min": 1.0,
+        "recall_max": 1.0,
+        "accuracy_mean": 0.625,
+        "precision_mean": 0.25,
+        "f1_mean": 0.4,
+        "threshold_mean": 16.0
+      },
+      "per_seed": [
+        {
+          "seed": 0,
+          "best_threshold": 16,
+          "val": {
+            "threshold": 16,
+            "tp": 2,
+            "fp": 0,
+            "fn": 0,
+            "tn": 14,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "positive_rate": 0.125
+          },
+          "test": {
+            "threshold": 16,
+            "tp": 2,
+            "fp": 6,
+            "fn": 0,
+            "tn": 8,
+            "accuracy": 0.625,
+            "precision": 0.25,
+            "recall": 1.0,
+            "f1": 0.4,
+            "positive_rate": 0.5
+          }
+        }
+      ]
+    }
+  ],
+  "baseline_logit": {
+    "threshold": 0.8801908450505479,
+    "val": {
+      "tp": 2.0,
+      "fp": 0.0,
+      "fn": 0.0,
+      "tn": 14.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "accuracy": 1.0
+    },
+    "test": {
+      "tp": 2.0,
+      "fp": 0.0,
+      "fn": 0.0,
+      "tn": 14.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "accuracy": 1.0
+    }
+  }
+}

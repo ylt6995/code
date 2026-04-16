@@ -1,0 +1,32 @@
+你是招投标审计与反围串标专家。你的任务是对单个招标项目的围标/串标风险进行量化评估。
+
+打分标准（总分 0-100，分数越高风险越高）：
+1) 价格与排序异常（0-35）：中标价显著低于其他报价；或存在规律性差值/比例；或多家报价高度贴近。
+2) 集中度指标（0-15）：CV（变异系数）越低越可疑；RD（最低价与次低价差/落败者标准差）越高越可疑。
+3) 报价时间/版本同步（0-10）：versionnumber 等字段高度相近或呈现异常同步。
+4) 公司关联线索（0-25）：高管/股东交叉任职；注册时间/地点相近；电话/邮箱重复。
+5) 其他强证据（0-15）：同一联系人、明显的掩护报价行为、与常识不符的报价结构等。
+
+风险等级建议：0-20 低；21-40 中；41-70 高；71-100 严重。
+
+输出要求：
+- 只输出一个合法 JSON，不要输出额外文本。
+- collusionSuspicionScore 必须是 0-100 的整数。
+- scoringStandard 用一句话概括本次打分依据（不要复述全部标准）。
+- scoringBreakdown 给出每个维度的得分与证据。
+
+JSON Schema：
+{
+  "collusionSuspicionScore": 0,
+  "riskLevel": "Low|Medium|High|Critical",
+  "scoringStandard": "string",
+  "scoringBreakdown": [
+    {"dimension": "string", "points": 0, "evidence": ["string"]}
+  ],
+  "keyEvidence": ["string"],
+  "mostSuspiciousGroup": {"bidders": ["string"], "reasoning": "string"},
+  "recommendedInvestigationSteps": ["string"]
+}
+
+现在请分析下面这个项目的数据，并严格只输出一个 JSON：
+{"project": {"bid_ann_guid": "60c5e697-dc3a-468a-a8e3-2ec50d61eadd", "projguid": "1e2f3a4b-5c6d-7e8f-9a0b-1c2d3e4f5a6b", "projname": "水果冷链物流园（气调库）扩建项目", "tenderee": "金盾投资控股"}, "announcement": {"bidnoticetitle": "电动汽车充电站（超充网络）扩建项目招标公告", "begindatetime": "2024-09-16", "callbackenddatetime": "2024-09-30", "questionenddatetime": "2024-09-18", "answeringquestionenddatetime": "2024-09-23", "x_filleddeptname": "金盾投资控股-集团公司部门-招标采购部", "x_filledbyname": "王静"}, "bidders": [{"x_providername": "泰合工程咨询", "x_price": 89449.973878, "versionnumber": "2024-09-17T02:09:16.000+08:00", "x_isqualified": 1, "x_biddercontact": 13812345678, "principals": [{"name": "谭玉梅", "position": "General Manager", "shareholding_ratio": 0.1}, {"name": "蔡娟", "position": "Deputy General Manager", "shareholding_ratio": 0.07}], "shareholders": [{"name": "王杰", "shareholding_ratio": 0.19, "subscribed_capital": 420000}, {"name": "曾兰英", "shareholding_ratio": 0.09, "subscribed_capital": 450000}, {"name": "张淑兰", "shareholding_ratio": 0.07, "subscribed_capital": 360000}], "registration_time": "2018-10-04", "registration_place": "安徽省阜新县永川唐街M座 388867", "registration_phone_numbers": ["13394107707", "18831844848", "18536751864"], "registration_emails": ["li49@example.org"]}, {"x_providername": "恒信工程设计", "x_price": 139815.018659, "versionnumber": "2024-09-18T02:09:16.000+08:00", "x_isqualified": 0, "x_biddercontact": 18655667788, "principals": [{"name": "郭楠", "position": "General Manager", "shareholding_ratio": 0.1}, {"name": "刘亮", "position": "Deputy General Manager", "shareholding_ratio": 0.1}, {"name": "董欣", "position": "Director", "shareholding_ratio": 0.01}, {"name": "王红", "position": "Director", "shareholding_ratio": 0.03}], "shareholders": [{"name": "苏建", "shareholding_ratio": 0.19, "subscribed_capital": 750000}, {"name": "朱雷", "shareholding_ratio": 0.2, "subscribed_capital": 820000}, {"name": "董丽", "shareholding_ratio": 0.02, "subscribed_capital": 350000}], "registration_time": "2014-09-26", "registration_place": "江苏省汕尾市花溪刘街e座 561193", "registration_phone_numbers": ["13235838975", "18205699791"], "registration_emails": ["ganglong@example.org", "maoyan@example.com", "xiulan36@example.com"]}, {"x_providername": "中创建筑有限公司", "x_price": 75423.323077, "versionnumber": "2024-09-18T02:09:16.000+08:00", "x_isqualified": 0, "x_biddercontact": 13812345678, "principals": [{"name": "王秀珍", "position": "General Manager", "shareholding_ratio": 0.08}, {"name": "胡淑珍", "position": "Deputy General Manager", "shareholding_ratio": 0.03}, {"name": "张丹丹", "position": "Director", "shareholding_ratio": 0.06}, {"name": "潘婷婷", "position": "Director", "shareholding_ratio": 0.04}], "shareholders": [{"name": "钟淑珍", "shareholding_ratio": 0.03, "subscribed_capital": 610000}, {"name": "刘秀芳", "shareholding_ratio": 0.02, "subscribed_capital": 820000}, {"name": "李帅", "shareholding_ratio": 0.13, "subscribed_capital": 190000}], "registration_time": "2015-12-02", "registration_place": "台湾省淮安县锡山王街D座 284805", "registration_phone_numbers": ["13746953169", "15525959965", "13938124807"], "registration_emails": ["ming02@example.net"]}, {"x_providername": "金信工程设计//晨光建设集团", "x_price": 94083.300005, "versionnumber": "2024-09-17T02:09:16.000+08:00", "x_isqualified": 0, "x_biddercontact": 18477665544, "principals": [{"name": "刘凤兰", "position": "General Manager", "shareholding_ratio": 0.07}, {"name": "陈玉梅", "position": "Deputy General Manager", "shareholding_ratio": 0.04}, {"name": "黄东", "position": "Director", "shareholding_ratio": 0.0}], "shareholders": [{"name": "曾丹丹", "shareholding_ratio": 0.14, "subscribed_capital": 250000}, {"name": "刘冬梅", "shareholding_ratio": 0.09, "subscribed_capital": 570000}, {"name": "何海燕", "shareholding_ratio": 0.01, "subscribed_capital": 820000}, {"name": "王博", "shareholding_ratio": 0.24, "subscribed_capital": 660000}], "registration_time": "2018-04-28", "registration_place": "陕西省斌县秀英杨街E座 955603", "registration_phone_numbers": ["13852634980", "18884349254", "18258592124"], "registration_emails": ["min32@example.org", "ofang@example.org", "wbai@example.com"]}, {"x_providername": "恒信工程设计//中恒建筑有限公司", "x_price": 128312.022939, "versionnumber": "2024-09-17T02:09:16.000+08:00", "x_isqualified": 0, "x_biddercontact": 13477665544, "principals": [{"name": "李凤英", "position": "General Manager", "shareholding_ratio": 0.03}, {"name": "李桂芝", "position": "Deputy General Manager", "shareholding_ratio": 0.05}], "shareholders": [{"name": "叶玉", "shareholding_ratio": 0.02, "subscribed_capital": 450000}, {"name": "高秀华", "shareholding_ratio": 0.06, "subscribed_capital": 690000}, {"name": "武畅", "shareholding_ratio": 0.1, "subscribed_capital": 900000}, {"name": "高斌", "shareholding_ratio": 0.18, "subscribed_capital": 10000}], "registration_time": "2013-11-30", "registration_place": "内蒙古自治区北镇市花溪潮州街t座 130343", "registration_phone_numbers": ["13689016073"], "registration_emails": ["fang24@example.org"]}], "indicators": {"rd": 0.470020082116333, "cv_losing": 0.27276386775928174, "price_cv_all": 0.2593742974943273, "contact_dup_count": 1, "phone_dup_count": 0, "email_dup_count": 0, "wins": [0, 0, 0, 1, 0]}}

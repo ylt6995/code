@@ -1,0 +1,6 @@
+﻿model,recall
+LR,0.55
+LightGBM,0.35
+XGBoost,0.4
+GLM-4.7,0.7
+GPT-4o-mini,1.0

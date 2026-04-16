@@ -1,0 +1,36 @@
+你是招投标审计与反围串标专家。你的任务是对单个招标项目的围标/串标风险进行量化评估。
+
+打分标准（总分 0-100，分数越高风险越高）：
+1) 价格与排序异常（0-35）：中标价显著低于其他报价；或存在规律性差值/比例；或多家报价高度贴近。
+2) 集中度指标（0-15）：CV（变异系数）越低越可疑；RD（最低价与次低价差/落败者标准差）越高越可疑。
+3) 报价时间/版本同步（0-10）：versionnumber 等字段高度相近或呈现异常同步。
+4) 公司关联线索（0-25）：高管/股东交叉任职；注册时间/地点相近；电话/邮箱重复。
+5) 其他强证据（0-15）：同一联系人、明显的掩护报价行为、与常识不符的报价结构等。
+
+风险等级建议：0-20 低；21-40 中；41-70 高；71-100 严重。
+
+输出要求：
+- 只输出一个合法 JSON，不要输出额外文本。
+- collusionSuspicionScore 必须是 0-100 的整数。
+- scoringStandard 用一句话概括本次打分依据（不要复述全部标准）。
+- scoringBreakdown 给出每个维度的得分与证据。
+
+JSON Schema：
+{
+  "collusionSuspicionScore": 0,
+  "riskLevel": "Low|Medium|High|Critical",
+  "scoringStandard": "string",
+  "scoringBreakdown": [
+    {"dimension": "string", "points": 0, "evidence": ["string"]}
+  ],
+  "keyEvidence": ["string"],
+  "mostSuspiciousGroup": {"bidders": ["string"], "reasoning": "string"},
+  "recommendedInvestigationSteps": ["string"]
+}
+
+推理过程要求：
+- 你可以在内部逐步推理，但不要在输出中呈现推理过程。
+- 请先分别检查价格模式、集中度指标、时间同步、公司关联，再汇总成分数。
+
+现在请分析下面这个项目的数据，并严格只输出一个 JSON：
+{"project": {"bid_ann_guid": "eb1050f1-4783-4bc8-abbb-af0ace6aa36b", "projguid": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f", "projname": "碳化硅衬底（6英寸）生产研发基地", "tenderee": "绿能发展有限公司"}, "announcement": {"bidnoticetitle": "滨海养老服务中心（医养结合型）改扩建项目招标公告", "begindatetime": "2024-01-22", "callbackenddatetime": "2024-02-05", "questionenddatetime": "2024-01-24", "answeringquestionenddatetime": "2024-01-29", "x_filleddeptname": "绿能发展有限公司-集团公司部门-招标采购部", "x_filledbyname": "王艳"}, "bidders": [{"x_providername": "鼎盛建筑有限公司", "x_price": 77757.292301, "versionnumber": "2024-01-24T02:09:16.000+08:00", "x_isqualified": 1, "x_biddercontact": 18322334455}, {"x_providername": "金信工程设计//中恒建筑有限公司", "x_price": 115118.968321, "versionnumber": "2024-01-23T02:09:16.000+08:00", "x_isqualified": 0, "x_biddercontact": 18144332211}, {"x_providername": "蓝天科技有限公司//中恒建筑有限公司", "x_price": 98174.192329, "versionnumber": "2024-01-22T02:09:16.000+08:00", "x_isqualified": 0, "x_biddercontact": 13987654321}, {"x_providername": "恒信工程设计//华宇建设集团", "x_price": 117807.83834, "versionnumber": "2024-01-23T02:09:16.000+08:00", "x_isqualified": 0, "x_biddercontact": 18088776655}, {"x_providername": "远景规划设计院//晨光建设集团", "x_price": 63576.822137, "versionnumber": "2024-01-23T02:09:16.000+08:00", "x_isqualified": 0, "x_biddercontact": 13144332211}], "indicators": {"rd": 0.5681889846875687, "cv_losing": 0.2529385880315095, "price_cv_all": 0.2492432290394097, "contact_dup_count": 0, "phone_dup_count": 0, "email_dup_count": 0, "wins": [1, 0, 0, 0, 0]}}

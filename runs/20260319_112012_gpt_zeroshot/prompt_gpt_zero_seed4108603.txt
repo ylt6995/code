@@ -1,0 +1,32 @@
+你是招投标审计与反围串标专家。你的任务是对单个招标项目的围标/串标风险进行量化评估。
+
+打分标准（总分 0-100，分数越高风险越高）：
+1) 价格与排序异常（0-35）：中标价显著低于其他报价；或存在规律性差值/比例；或多家报价高度贴近。
+2) 集中度指标（0-15）：CV（变异系数）越低越可疑；RD（最低价与次低价差/落败者标准差）越高越可疑。
+3) 报价时间/版本同步（0-10）：versionnumber 等字段高度相近或呈现异常同步。
+4) 公司关联线索（0-25）：高管/股东交叉任职；注册时间/地点相近；电话/邮箱重复。
+5) 其他强证据（0-15）：同一联系人、明显的掩护报价行为、与常识不符的报价结构等。
+
+风险等级建议：0-20 低；21-40 中；41-70 高；71-100 严重。
+
+输出要求：
+- 只输出一个合法 JSON，不要输出额外文本。
+- collusionSuspicionScore 必须是 0-100 的整数。
+- scoringStandard 用一句话概括本次打分依据（不要复述全部标准）。
+- scoringBreakdown 给出每个维度的得分与证据。
+
+JSON Schema：
+{
+  "collusionSuspicionScore": 0,
+  "riskLevel": "Low|Medium|High|Critical",
+  "scoringStandard": "string",
+  "scoringBreakdown": [
+    {"dimension": "string", "points": 0, "evidence": ["string"]}
+  ],
+  "keyEvidence": ["string"],
+  "mostSuspiciousGroup": {"bidders": ["string"], "reasoning": "string"},
+  "recommendedInvestigationSteps": ["string"]
+}
+
+现在请分析下面这个项目的数据，并严格只输出一个 JSON：
+{"project": {"bid_ann_guid": "31ae61e0-aea5-4566-bcf4-6b8aef914089", "projguid": "7da5bfb4-1c61-42bb-9cd2-83875079b564", "projname": "金盾投资控股城市管网项目", "tenderee": "蓝海建设集团"}, "announcement": {"bidnoticetitle": "金盾投资控股城市管网项目招标公告", "begindatetime": "2025-01-06", "callbackenddatetime": "2025-01-30", "questionenddatetime": "2025-01-04", "answeringquestionenddatetime": "2025-01-13", "x_filleddeptname": "蓝海建设集团-集团公司部门-招标采购部", "x_filledbyname": "张勇"}, "bidders": [{"x_providername": "经纬建筑设计", "x_price": 26947945.775965, "versionnumber": "2025-01-29T22:00:00.000+08:00", "x_isqualified": 1, "x_biddercontact": 13852035079, "principals": [{"name": "王建国", "position": "General Manager", "shareholding_ratio": 0.03}, {"name": "周浩", "position": "Deputy General Manager", "shareholding_ratio": 0.03}, {"name": "杨伟", "position": "Director", "shareholding_ratio": 0.07}, {"name": "赵桂芝", "position": "Director", "shareholding_ratio": 0.01}], "shareholders": [{"name": "简伟", "shareholding_ratio": 0.25, "subscribed_capital": 1000000}, {"name": "李倩", "shareholding_ratio": 0.21, "subscribed_capital": 60000}], "registration_time": "2015-08-09", "registration_place": "江西省通辽市房山柳州路Q座 162664", "registration_phone_numbers": ["15270871367", "15777944107", "18081069561"], "registration_emails": ["epeng@example.org"]}, {"x_providername": "晨光建设集团", "x_price": 30330150.382251, "versionnumber": "2025-01-29T22:08:00.000+08:00", "x_isqualified": 0, "x_biddercontact": 18266554433, "principals": [{"name": "王建国", "position": "General Manager", "shareholding_ratio": 0.03}, {"name": "周浩", "position": "Deputy General Manager", "shareholding_ratio": 0.03}], "shareholders": [{"name": "傅冬梅", "shareholding_ratio": 0.02, "subscribed_capital": 840000}], "registration_time": "2017-11-04", "registration_place": "澳门特别行政区丽丽县安次马鞍山街v座 489090", "registration_phone_numbers": ["18749103758", "14719086884", "13725303253"], "registration_emails": ["epeng@example.org"]}, {"x_providername": "宏远建设集团//银河规划设计院", "x_price": 28589075.673721, "versionnumber": "2025-01-29T22:06:00.000+08:00", "x_isqualified": 0, "x_biddercontact": 18266554433, "principals": [{"name": "高东", "position": "General Manager", "shareholding_ratio": 0.06}, {"name": "郑桂芝", "position": "Deputy General Manager", "shareholding_ratio": 0.09}], "shareholders": [{"name": "杨岩", "shareholding_ratio": 0.08, "subscribed_capital": 760000}, {"name": "周浩", "shareholding_ratio": 0.05, "subscribed_capital": 960000}, {"name": "陈峰", "shareholding_ratio": 0.1, "subscribed_capital": 780000}, {"name": "刘林", "shareholding_ratio": 0.13, "subscribed_capital": 370000}], "registration_time": "2017-01-09", "registration_place": "江西省通辽市房山柳州路Q座 162664", "registration_phone_numbers": ["15804837343", "18257387715"], "registration_emails": ["gfang@example.net"]}, {"x_providername": "远景规划设计院//华宇建设集团", "x_price": 29446747.943933, "versionnumber": "2025-01-29T22:09:00.000+08:00", "x_isqualified": 0, "x_biddercontact": 18266554433, "principals": [{"name": "傅冬梅", "position": "General Manager", "shareholding_ratio": 0.02}, {"name": "陈玉梅", "position": "Deputy General Manager", "shareholding_ratio": 0.04}, {"name": "陈萍", "position": "Director", "shareholding_ratio": 0.01}, {"name": "林鹏", "position": "Director", "shareholding_ratio": 0.05}], "shareholders": [{"name": "杨淑珍", "shareholding_ratio": 0.01, "subscribed_capital": 700000}, {"name": "林燕", "shareholding_ratio": 0.25, "subscribed_capital": 760000}, {"name": "戴英", "shareholding_ratio": 0.02, "subscribed_capital": 490000}], "registration_time": "2017-11-13", "registration_place": "江西省辉县江北刘街T座 480304", "registration_phone_numbers": ["15270871367"], "registration_emails": ["guowei@example.com"]}, {"x_providername": "鼎盛建筑有限公司", "x_price": 27756384.149244, "versionnumber": "2025-01-29T22:01:00.000+08:00", "x_isqualified": 0, "x_biddercontact": 18266554433, "principals": [{"name": "邓荣", "position": "General Manager", "shareholding_ratio": 0.03}, {"name": "郑坤", "position": "Deputy General Manager", "shareholding_ratio": 0.05}], "shareholders": [{"name": "傅冬梅", "shareholding_ratio": 0.02, "subscribed_capital": 840000}, {"name": "王建国", "shareholding_ratio": 0.04, "subscribed_capital": 210000}, {"name": "俞坤", "shareholding_ratio": 0.1, "subscribed_capital": 400000}], "registration_time": "2016-07-21", "registration_place": "北京市辛集县和平王街Q座 527413", "registration_phone_numbers": ["18065175344", "18892329675", "18082981615"], "registration_emails": ["min11@example.com", "wei64@example.org", "nyuan@example.net"]}], "indicators": {"rd": 0.7298765519568127, "cv_losing": 0.03815413855370112, "price_cv_all": 0.04672602521206443, "contact_dup_count": 3, "phone_dup_count": 1, "email_dup_count": 1, "wins": [1, 0, 0, 0, 0]}}
