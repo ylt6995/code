@@ -1,0 +1,65 @@
+你是招投标审计与反围串标专家。你的任务是对单个招标项目的围标/串标风险进行量化评估。
+
+【输入范围限制】本次只提供“报价 x_price”和“提交时间 versionnumber”。
+- 你必须只基于价格模式与时间/版本同步进行判断。
+- 不允许利用任何公司名称、联系人电话、资格审查、公告标题、项目名称等信息（这些信息不会提供）。
+
+打分标准（总分 0-100，分数越高风险越高）：
+【重要】本模式只提供价格+提交时间，证据有限，分数应更保守，但仍需拉开区分度（避免所有样本都卡在 10-20）。
+1) 价格与排序异常（0-60）：报价高度贴近/出现规则性差值或比例/明显分层但缺乏竞争合理性。
+2) 报价时间/版本同步（0-40）：versionnumber 高度相近（尤其同秒或同一极短窗口内批量提交）。
+
+分数区间建议：
+- 0-20：几乎无证据或仅有很弱迹象。
+- 21-40：存在1个中等强度迹象（如时间接近但价格差异较大，或价格贴近但时间分散）。
+- 41-60：两个维度均出现一定异常，但仍缺乏软信息佐证。
+- 61-80：两个维度都非常强（如价格极度贴近且时间高度同步），仍需在 keyEvidence 明确‘仅基于硬信息，结论不确定’。
+- 81-100：除非出现极端一致（同秒提交 + 价格几乎完全一致），否则不要使用。
+
+风险等级建议：0-20 低；21-40 中；41-60 高；61-100 严重。
+
+输出要求：
+- 只输出一个合法 JSON，不要输出额外文本。
+- collusionSuspicionScore 必须是 0-100 的整数。
+- scoringStandard 用一句话概括本次打分依据（不要复述全部标准）。
+- scoringBreakdown 给出每个维度的得分与证据。
+
+JSON Schema：
+{
+  "collusionSuspicionScore": 0,
+  "riskLevel": "Low|Medium|High|Critical",
+  "scoringStandard": "string",
+  "scoringBreakdown": [
+    {"dimension": "string", "points": 0, "evidence": ["string"]}
+  ],
+  "keyEvidence": ["string"],
+  "mostSuspiciousGroup": {"bidders": ["string"], "reasoning": "string"},
+  "recommendedInvestigationSteps": ["string"]
+}
+
+少样本参考（仅用于学习输出风格，不要照抄结论）：
+注意：本模式只提供价格+提交时间，证据天然不充分。
+- 不要把大多数样本都压成同一个分数（例如全部 15 分），应根据价格/时间模式细微差异给出 5-45 的区分。
+- 若存在一定可疑（如价格极度贴近或时间高度同步），可给 25-45 的中等分；若证据很弱则给 0-20，并在 keyEvidence 中说明不确定性。
+示例输入：
+{"case_id": "bdaca4fb-e5fb-4ff7-8a81-17e4880260c6", "bidders": [{"bidder": "A", "x_price": 29510346.024593, "versionnumber": "2024-06-21T21:00:00.000+08:00"}, {"bidder": "B", "x_price": 30395656.405331, "versionnumber": "2024-06-21T21:01:00.000+08:00"}, {"bidder": "C", "x_price": 31307526.097491, "versionnumber": "2024-06-21T21:04:00.000+08:00"}, {"bidder": "D", "x_price": 32246751.880415, "versionnumber": "2024-06-21T21:09:00.000+08:00"}, {"bidder": "E", "x_price": 33214154.436828, "versionnumber": "2024-06-21T21:08:00.000+08:00"}]}
+示例输出：
+{"collusionSuspicionScore": 52, "riskLevel": "High", "scoringStandard": "仅基于价格模式与提交时间同步进行计分（硬信息消融，证据有限）", "scoringBreakdown": [{"dimension": "价格异常", "points": 30, "evidence": ["示例"]}, {"dimension": "时间/版本同步", "points": 22, "evidence": ["示例"]}], "keyEvidence": ["围标/串标"], "mostSuspiciousGroup": {"bidders": [], "reasoning": "围标/串标"}, "recommendedInvestigationSteps": ["补充标书文本相似度证据", "核验投标时间戳来源与日志", "复核报价形成依据"]}
+
+示例输入：
+{"case_id": "584a3eab-f5a4-4df6-9b44-8ebb92f68b66", "bidders": [{"bidder": "A", "x_price": 13319056.840962, "versionnumber": "2024-12-11T02:00:00.000+08:00"}, {"bidder": "B", "x_price": 11308737.186507, "versionnumber": "2024-12-10T18:00:00.000+08:00"}, {"bidder": "C", "x_price": 13542671.965595, "versionnumber": "2024-12-10T06:00:00.000+08:00"}, {"bidder": "D", "x_price": 12867116.121356, "versionnumber": "2024-12-10T06:00:00.000+08:00"}, {"bidder": "E", "x_price": 11296624.372092, "versionnumber": "2024-12-11T10:00:00.000+08:00"}]}
+示例输出：
+{"collusionSuspicionScore": 8, "riskLevel": "Low", "scoringStandard": "仅基于价格模式与提交时间同步进行计分（硬信息消融，证据有限）", "scoringBreakdown": [{"dimension": "价格异常", "points": 5, "evidence": ["示例"]}, {"dimension": "时间/版本同步", "points": 3, "evidence": ["示例"]}], "keyEvidence": ["非围标"], "mostSuspiciousGroup": {"bidders": [], "reasoning": "非围标"}, "recommendedInvestigationSteps": ["补充标书文本相似度证据", "核验投标时间戳来源与日志", "复核报价形成依据"]}
+
+示例输入：
+{"case_id": "03538dd8-d6f2-480b-bb95-7f09d6828014", "bidders": [{"bidder": "A", "x_price": 83579.95, "versionnumber": "2025-08-05T02:09:16.000+08:00"}, {"bidder": "B", "x_price": 89832.34, "versionnumber": "2025-08-05T02:09:16.000+08:00"}, {"bidder": "C", "x_price": 96084.73, "versionnumber": "2025-08-06T02:09:16.000+08:00"}, {"bidder": "D", "x_price": 102337.12, "versionnumber": "2025-08-06T02:09:16.000+08:00"}, {"bidder": "E", "x_price": 108589.51, "versionnumber": "2025-08-04T02:09:16.000+08:00"}]}
+示例输出：
+{"collusionSuspicionScore": 52, "riskLevel": "High", "scoringStandard": "仅基于价格模式与提交时间同步进行计分（硬信息消融，证据有限）", "scoringBreakdown": [{"dimension": "价格异常", "points": 30, "evidence": ["示例"]}, {"dimension": "时间/版本同步", "points": 22, "evidence": ["示例"]}], "keyEvidence": ["围标/串标"], "mostSuspiciousGroup": {"bidders": [], "reasoning": "围标/串标"}, "recommendedInvestigationSteps": ["补充标书文本相似度证据", "核验投标时间戳来源与日志", "复核报价形成依据"]}
+
+示例输入：
+{"case_id": "1eed0c25-a574-4fab-9a3f-3cea8e241e56", "bidders": [{"bidder": "A", "x_price": 20415253.869944, "versionnumber": "2024-10-29T16:00:00.000+08:00"}, {"bidder": "B", "x_price": 21548735.295122, "versionnumber": "2024-10-29T01:00:00.000+08:00"}, {"bidder": "C", "x_price": 20838837.110421, "versionnumber": "2024-10-28T12:00:00.000+08:00"}, {"bidder": "D", "x_price": 18893805.005488, "versionnumber": "2024-10-28T22:00:00.000+08:00"}, {"bidder": "E", "x_price": 18716624.613266, "versionnumber": "2024-10-29T02:00:00.000+08:00"}]}
+示例输出：
+{"collusionSuspicionScore": 8, "riskLevel": "Low", "scoringStandard": "仅基于价格模式与提交时间同步进行计分（硬信息消融，证据有限）", "scoringBreakdown": [{"dimension": "价格异常", "points": 5, "evidence": ["示例"]}, {"dimension": "时间/版本同步", "points": 3, "evidence": ["示例"]}], "keyEvidence": ["非围标"], "mostSuspiciousGroup": {"bidders": [], "reasoning": "非围标"}, "recommendedInvestigationSteps": ["补充标书文本相似度证据", "核验投标时间戳来源与日志", "复核报价形成依据"]}
+
+现在请分析下面这个项目的数据，并严格只输出一个 JSON：
+{"case_id": "eb1050f1-4783-4bc8-abbb-af0ace6aa36b", "bidders": [{"bidder": "A", "x_price": 115118.968321, "versionnumber": "2024-01-23T02:09:16.000+08:00"}, {"bidder": "B", "x_price": 77757.292301, "versionnumber": "2024-01-24T02:09:16.000+08:00"}, {"bidder": "C", "x_price": 63576.822137, "versionnumber": "2024-01-23T02:09:16.000+08:00"}, {"bidder": "D", "x_price": 117807.83834, "versionnumber": "2024-01-23T02:09:16.000+08:00"}, {"bidder": "E", "x_price": 98174.192329, "versionnumber": "2024-01-22T02:09:16.000+08:00"}]}

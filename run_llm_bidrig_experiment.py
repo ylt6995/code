@@ -10,7 +10,7 @@ from typing import Dict, List, Optional, Sequence, Tuple
 from bidrig.dataset import ProjectSample, load_all_data_xlsx
 from bidrig.io_cache import CacheRecord, append_cache, load_cache, make_cache_key
 from bidrig.llm_client import LLMSettings, chat_with_retry, load_settings
-from bidrig.metrics import BinaryMetrics, compute_metrics, find_threshold_max_recall, find_threshold_recall_at_least, summarize_runs
+from bidrig.metrics import BinaryMetrics, compute_metrics, find_threshold_max_f1, find_threshold_max_recall, find_threshold_recall_at_least, summarize_runs
 from bidrig.parse_output import extract_score, parse_model_json
 from bidrig.prompts import build_prompt
 from bidrig.split import split_6_2_2_stratified, split_fixed_test_balance
@@ -92,7 +92,7 @@ def main() -> None:
         "llm_settings": provider_settings,
         "retry": {"max_retries": 6, "backoff_s": [2, 4, 8, 16, 32, 60]},
         "threshold_selection": {
-            "strategy": "recall_at_least_then_max_precision",
+            "strategy": args.threshold_strategy,
             "recall_target": args.recall_target,
             "recall_target_by_method": recall_target_by_method,
         },
@@ -152,7 +152,10 @@ def main() -> None:
                 if args.fixed_threshold is not None:
                     best = compute_metrics(val_scores, val_labels, threshold=args.fixed_threshold)
                 else:
-                    best = find_threshold_recall_at_least(val_scores, val_labels, recall_target=rt)
+                    if args.threshold_strategy == "max_f1":
+                        best = find_threshold_max_f1(val_scores, val_labels)
+                    else:
+                        best = find_threshold_recall_at_least(val_scores, val_labels, recall_target=rt)
                 val_metrics_runs.append(best)
 
                 test_rows, cache_updates_2 = score_split(
@@ -197,7 +200,7 @@ def main() -> None:
                         "provider": provider,
                         "method": method,
                         "seed": seed,
-                        "val_recall_target": rt,
+                        "val_recall_target": rt if args.threshold_strategy != "max_f1" else "",
                         "best_threshold_by_val_recall": best.threshold,
                         "val_accuracy": best.accuracy,
                         "val_precision": best.precision,
@@ -252,6 +255,11 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--max-samples", type=int, default=0)
     p.add_argument("--recall-target", type=float, default=0.9)
     p.add_argument("--recall-target-by-method", default="")
+    p.add_argument(
+        "--threshold-strategy",
+        choices=["recall_at_least_then_max_precision", "max_f1"],
+        default="recall_at_least_then_max_precision",
+    )
     p.add_argument("--hard-scope", choices=["full", "price_time"], default="full")
     p.add_argument("--fixed-threshold", type=float, default=None, help="If set, skips validation search and uses this fixed threshold (e.g. 41.5)")
     p.add_argument("--dry-run", action="store_true")

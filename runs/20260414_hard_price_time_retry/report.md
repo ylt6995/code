@@ -3,15 +3,15 @@
 ## 配置披露
 - 数据集：data/all_data.xlsx
 - 划分比例：6:2:2（训练/验证/测试），split_seed=42
-- Prompt seeds：[0]
-- 模型厂商：['zhipu']
-- 提示词方法：['cot']
+- Prompt seeds：[1867825, 419610, 4614226, 4108603, 3744854, 2341057, 1719583, 9149732, 1458591, 9906820]
+- 模型厂商：['gpt']
+- 提示词方法：['zero', 'few', 'cot']
 - few-shot 每类样本数：2
 - 划分策略：{'fixed_test_balance': True, 'test_size': 40, 'test_pos': 20}
 - 划分标签分布：split_label_counts.json
 
 ### LLM 参数（Temperature / Top-p / Max Tokens / Timeout）
-- zhipu：{'provider': 'zhipu', 'api_key': '43afddac9f27481c9cddaecc788add9e.k4euT7GTuS9RTgMS', 'base_url': 'https://open.bigmodel.cn/api/paas/v4', 'model': 'glm-4.7', 'temperature': 0.1, 'top_p': 0.9, 'timeout_s': 300.0, 'max_tokens': 6000}
+- gpt：{'provider': 'gpt', 'api_key': 'sk-g8htlwkKoAPwSWcTLWosSHbzhrf85nQ8ntg6kUAQSu9CEAzt', 'base_url': 'https://api.chatanywhere.tech/v1', 'model': 'gpt-4o-mini', 'temperature': 0.1, 'top_p': 0.9, 'timeout_s': 300.0, 'max_tokens': 6000}
 
 ### 重试机制
 - {'max_retries': 6, 'backoff_s': [2, 4, 8, 16, 32, 60]}
@@ -42,7 +42,7 @@ score = clamp_int(obj.get('collusionSuspicionScore'), 0, 100) if present else 0
 ```
 
 ## 阈值确定依据
-- 阈值策略：{'strategy': 'recall_at_least_then_max_precision', 'recall_target': 0.9, 'recall_target_by_method': {}}
+- 阈值策略：{'strategy': 'max_f1', 'recall_target': 0.9, 'recall_target_by_method': {}}
 - 在验证集上枚举阈值 t=0..100。
 - 先筛选出 Recall ≥ recall_target 的阈值集合。
 - 在集合内选择 Precision 最高的阈值；若并列，再比较 F1，最后比较预测为正比例更低。

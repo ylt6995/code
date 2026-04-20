@@ -84,6 +84,36 @@ def find_threshold_max_recall(scores: List[int], labels: List[int]) -> BinaryMet
     return best
 
 
+def find_threshold_max_f1(scores: List[int], labels: List[int]) -> BinaryMetrics:
+    best: Optional[BinaryMetrics] = None
+    for t in range(0, 101):
+        m = compute_metrics(scores, labels, threshold=t)
+        if best is None:
+            best = m
+            continue
+        if m.f1 > best.f1:
+            best = m
+            continue
+        if m.f1 < best.f1:
+            continue
+        if m.precision > best.precision:
+            best = m
+            continue
+        if m.precision < best.precision:
+            continue
+        if m.recall > best.recall:
+            best = m
+            continue
+        if m.recall < best.recall:
+            continue
+        if m.positive_rate < best.positive_rate:
+            best = m
+
+    if best is None:
+        return compute_metrics([], [], threshold=50)
+    return best
+
+
 def find_threshold_recall_at_least(scores: List[int], labels: List[int], *, recall_target: float) -> BinaryMetrics:
     target = float(recall_target)
     if target < 0:

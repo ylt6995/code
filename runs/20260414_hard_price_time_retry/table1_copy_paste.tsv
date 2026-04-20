@@ -1,0 +1,45 @@
+Model	Prompting	ROC-AUC	PR-AUC	Precision	Recall	F1
+Logistic Regression	?	0.655	0.718	?	0.55	?
+LightGBM	?	0.723	0.758	?	0.35	?
+XGBoost	?	0.755	0.777	?	0.40	?
+GPT-4o-mini (hard info + soft info)	Zero-shot	"0.620 ?
+0.049"	"0.616 ?
+0.057"	"0.504 ?
+0.006"	1.000	"0.670 ?
+0.005"
+GPT-4o-mini (hard info + soft info)	Few-shot	"0.633 ?
+0.048"	"0.628 ?
+0.056"	"0.535 ?
+0.052"	"0.885 ?
+0.143"	"0.659 ?
+0.032"
+GPT-4o-mini (hard info + soft info)	CoT	"0.597 ?
+0.067"	"0.630 ?
+0.050"	"0.496 ?
+0.021"	"0.875 ?
+0.146"	"0.629 ?
+0.046"
+GLM-4.7 (hard info + soft info)	Zero-shot	0.584	0.525	0.519	0.712	0.596
+GLM-4.7 (hard info + soft info)	Few-shot	0.688	0.625	0.632	0.637	0.615
+GLM-4.7 (hard info + soft info)	CoT	0.720	0.700	0.833	0.520	0.625
+GPT-4o-mini (hard info)	Zero-shot	"0.604 ?
+0.053"	"0.607 ?
+0.032"	"0.605 ?
+0.130"	"0.590 ?
+0.275"	"0.554 ?
+0.116"
+GPT-4o-mini (hard info)	Few-shot	"0.564 ?
+0.029"	"0.577 ?
+0.035"	"0.563 ?
+0.079"	"0.415 ?
+0.270"	"0.434 ?
+0.145"
+GPT-4o-mini (hard info)	CoT	"0.576 ?
+0.095"	"0.590 ?
+0.076"	"0.520 ?
+0.130"	"0.605 ?
+0.322"	"0.526 ?
+0.184"
+GLM-4.7 (hard info)	Zero-shot	0.539	0.537	0.545	0.600	0.571
+GLM-4.7 (hard info)	Few-shot	0.506	0.553	0.533	0.400	0.457
+GLM-4.7 (hard info)	CoT	0.621	0.689	0.588	0.500	0.541
